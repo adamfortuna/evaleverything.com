@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://evaleverything.com/evaleverything/sitemap.xml 
+Sitemap: http://evaleverything.com/sitemap.xml 

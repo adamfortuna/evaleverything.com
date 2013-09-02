@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[eval('Everything')]]></title>
-  <link href="http://evaleverything.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: streaming | eval('Everything')]]></title>
+  <link href="http://evaleverything.com/categories/streaming/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
   <updated>2013-09-02T19:01:10-04:00</updated>
   <id>http://evaleverything.com/</id>

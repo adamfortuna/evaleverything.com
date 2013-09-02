@@ -1,21 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>
-            http://evaleverything.com/evaleverything/blog/2013/09/02/rails-event-streaming-using-eventsource/
-        </loc>
-        <lastmod>2013-09-02T18:25:21-04:00</lastmod>
+        <loc>http://evaleverything.com/2013/09/02/rails-event-streaming-using-eventsource/</loc>
+        <lastmod>2013-09-02T18:58:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://evaleverything.com/evaleverything/blog/archives/</loc>
-        <lastmod>2013-09-02T18:25:21-04:00</lastmod>
+        <loc>http://evaleverything.com/blog/archives/</loc>
+        <lastmod>2013-09-02T18:58:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://evaleverything.com/evaleverything/</loc>
-        <lastmod>2013-09-02T18:25:21-04:00</lastmod>
+        <loc>http://evaleverything.com/</loc>
+        <lastmod>2013-09-02T18:58:11-04:00</lastmod>
     </url>
     <url>
-        <loc>http://evaleverything.com/evaleverything/robots.txt</loc>
+        <loc>http://evaleverything.com/robots.txt</loc>
         <lastmod>2013-09-02T18:18:35-04:00</lastmod>
     </url>
 </urlset>
