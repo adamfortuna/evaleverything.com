@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[My Octopress Blog]]></title>
+  <link href="http://evaleverything.com/evaleverything/atom.xml" rel="self"/>
+  <link href="http://evaleverything.com/evaleverything/"/>
+  <updated>2013-09-02T18:29:55-04:00</updated>
+  <id>http://evaleverything.com/evaleverything/</id>
+  <author>
+    <name><![CDATA[Your Name]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Event Streaming Using EventSource]]></title>
+    <link href="http://evaleverything.com/evaleverything/blog/2013/09/02/rails-event-streaming-using-eventsource/"/>
+    <updated>2013-09-02T18:25:00-04:00</updated>
+    <id>http://evaleverything.com/evaleverything/blog/2013/09/02/rails-event-streaming-using-eventsource</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
