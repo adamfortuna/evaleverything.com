@@ -1,0 +1,49 @@
+article 
+  header 
+    margin-bottom: 1em
+    h1 
+      width: 130%
+      a:hover 
+        text-decoration: underline
+    .meta  
+      color: $c-article-subheaderColor
+      font-size: 14px
+  section 
+    line-height: 1.5
+    border-bottom: 1px solid lighten($c-header-backgroundColor, 60%)
+    padding-bottom: 2em
+    p 
+      margin-bottom: 1em
+    figure.code 
+      width: 150%
+    code 
+      color: $c-code-color
+      background-color: $c-code-color-background
+  .comments 
+    margin-top: 1em 
+
+body.home
+  article 
+    padding-top: 2em
+    h1 
+      a, a:hover 
+        color: #444
+    &:last-of-type 
+      .content section 
+        border: none
+        padding-bottom: 0
+
+body.post 
+  article 
+    header 
+      background-color: $c-header-backgroundColor
+      padding: 2em 0
+      margin-bottom: 2em
+      h1
+        a, a:hover 
+          color: $c-article-headerColor
+          text-decoration: none
+      .meta
+        color: $c-article-subheaderColor
+        a
+          color: $c-article-subheaderColor

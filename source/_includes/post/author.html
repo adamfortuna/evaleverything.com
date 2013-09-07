@@ -1,8 +1,5 @@
-{% if post.author %}
-  {% assign author = post.author %}
-{% elsif page.author %}
-  {% assign author = page.author %}
-{% else %}
-  {% assign author = site.author %}
-{% endif %}
-{% if author %}<span class="byline author vcard">Posted by <span class="fn">{{ author }}</span></span>{% endif %}
+<div class='pull-right author'>
+  <img src='/images/adam-fortuna.jpg' alt='Adam Fortuna' class='img-rounded'/>
+  <p><a href='http://adamfortuna.com'>Adam Fortuna</a> works at <a href='http://codeshool.com'>Code School</a> on courses and mostly focuses on JavaScript and Ruby.</span>
+  </p>
+</div>

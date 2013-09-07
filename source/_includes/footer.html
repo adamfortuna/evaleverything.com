@@ -1,12 +1,33 @@
 <footer>
   <div class='container'>
-
     <div class='col-md-3 col-md-offset-2'>
-      <p>Copyright ©2013 <a href='http://adamfortuna.com' target='_blank'>{{site.author}}</a> <a href='http://twitter.com/adamfortuna' target='_blank'>Twitter</a>. </p>
+      <h2>About</h2>
+      <p>{{ site.description }}</p>
     </div>
 
-    <p class='col-md-4 text-right'>
-      Powered by <a href='http://octopress.org'>Octopress</a>.
-    </p>
+    <div class='col-md-2'>
+      <h2>Posts By Tag</h2>
+      <ul>
+        <li><a href="/tags/javascript">JavaScript</a></li>
+        <li><a href="/tags/ruby">Ruby</a></li>
+        <li><a href="/tags/ruby-on-rails">Ruby on Rails</a></li>
+      </ul>
+    </div>
+
+    <div class='col-md-2'>
+      <h2>Pages</h2>
+      <ul>
+        <li><a href="/">Latest</a></li>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+
+    <div class='col-md-3'>
+      <h2>Contact</h2>
+      <p>Follow me on <a href='http://twitter.com/adamfortuna' target='_blank'>Twitter</a></p>
+      <p>©2013 <a href='http://adamfortuna.com' target='_blank'>{{site.author}}</a>.</p>
+      <p>Powered by <a href='http://octopress.org'>Octopress</a></p>
+    </div>
   </div>
 </footer>

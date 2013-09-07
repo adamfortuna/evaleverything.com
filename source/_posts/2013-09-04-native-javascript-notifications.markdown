@@ -45,12 +45,25 @@ Visiting this page isn't all that interesting, but all the components are there.
 writtten back to it, then once there is nothing more to send, the `stream` is closed. This will end that server request,
 ending it for the user as well.
 
-
-
 {% blockquote %}
 If you connected to this example in a browser, you'd see 3 lines of text then disconnect.
 {% endblockquote %}
 
+Visiting this page isn't all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the `stream` is closed. This will end that server request,
+ending it for the user as well.
+
+Visiting this page isn't all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the `stream` is closed. This will end that server request,
+ending it for the user as well.
+
+* Some list here
+* With multiple elements
+* how does it look?
+
+Visiting this page isn't all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the `stream` is closed. This will end that server request,
+ending it for the user as well.
 
 
 [Live Streaming in Rails]: http://tenderlovemaking.com/2012/07/30/is-it-live.html

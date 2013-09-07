@@ -1,16 +1,22 @@
 ---
 layout: default
 ---
-<article>
-  <header>
-    <h1>
-      <a class="brand" href="{{ page.url }}" rel="bookmark">
-        {{ page.title }}
-      </a>
-    </h1>
-  </header>
-  <div class="post">
-    {{ content }}
-  </div>
-  <div id="disqus_thread"></div>
-</article>
+<main id='content' role='main'>
+  <article>
+    <header>
+      <div class='container'>
+        <div class='col-md-7 col-md-offset-2'>
+          <h1 class="title">
+            <a href="{{ post.url }}">{{ page.title }}</a>
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <div class='container content'>
+      <section class='col-md-7 col-md-offset-2'>
+        {{ content }}
+      </section>
+    </div>
+  </article>
+</main>

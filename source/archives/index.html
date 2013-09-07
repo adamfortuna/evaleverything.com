@@ -1,24 +1,24 @@
 ---
 layout: page
-title: Blog Archive
+title: Post Archive
 footer: false
 ---
 
-<div id="blog-archives">
+<div id="archive">
   {% for post in paginator.posts %}
     {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
     {% unless year == this_year %}
       {% assign year = this_year %}
       {% unless forloop.first %}
-        </div></div><div class="row-fluid year-group">
+        </div></div><div class="year container">
       {% else %}
-        <div class="row-fluid year-group">
+        <div class="year container">
       {% endunless %}
 
-        <div class="span3">
+        <div class="col-md-2">
           <h2 class="year">{{ year }}</h2>
         </div>
-        <div class="span9">
+        <div class="col-md-10">
     {% endunless %}
 
     <article>

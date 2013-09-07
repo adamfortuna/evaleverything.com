@@ -5,7 +5,11 @@
         <h1 class="title">
           <a href="{{ post.url }}">{{ post.title }}</a>
         </h1>
-        <p class='meta'>Written by {{ post.author }} on {{ post.date|date: "%B %d, %Y" }}</p>
+        <p class='meta'>
+          Written {{ post.date|date: "%B %d, %Y" }}
+          | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#comments">Comments</a>
+          | {{ post.tags | tag_links }}
+        </p>
       </div>
     </div>
   </header>
@@ -13,12 +17,8 @@
   <div class='container content'>
     <section class='col-md-7 col-md-offset-2'>
     
-      {% if single_page %}
-        <div class='pull-right author'>
-          <img src='/images/adam-fortuna.jpg' alt='Adam Fortuna' class='img-rounded'/>
-          <p><a href='http://adamfortuna'>Adam Fortuna</a> is a developer at <a href='http://codeshool.com'>Code School</a> writing and implementing educational courses with a focus on JavaScript and Ruby on Rails.</span>
-          </p>
-        </div>
+      {% if single_page or postNumber == 0 %}
+        {% include post/author.html %}
       {% endif %}
 
       <div class='post-content'>
@@ -32,7 +32,7 @@
   </div>
 
   {% if single_page and post.comments %}
-    <div class='comments'>
+    <div class='comments' id='comments'>
       <div class='container'>
         <section class='col-md-7 col-md-offset-2'>
           <h2>Comments</h2>
