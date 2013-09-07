@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[eval('Everything')]]></title>
+  <title><![CDATA[eval Everything]]></title>
   <link href="http://evaleverything.com/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-09-02T19:01:10-04:00</updated>
+  <updated>2013-09-06T20:57:34-04:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -14,13 +14,142 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Native JavaScript Notifications]]></title>
+    <link href="http://evaleverything.com/2013/09/04/native-javascript-notifications/"/>
+    <updated>2013-09-04T23:42:00-04:00</updated>
+    <id>http://evaleverything.com/2013/09/04/native-javascript-notifications</id>
+    <content type="html"><![CDATA[<p>If you&rsquo;re on the fence about updating an older application to use Rails 4, the addition of <code>ActionController::Live</code>
+might be helpful in making your decision a little easier.</p>
+
+<h2>A Basic Connection</h2>
+
+<p>Aaron Patterson wrote a great post about <a href="http://tenderlovemaking.com/2012/07/30/is-it-live.html">Live Streaming in Rails</a>, over a year ago, but the interface is mostly
+the same today. That post is still a good starting point for <code>ActionController::Live</code>.</p>
+
+<p>I first ran into the subject when working on Code School&rsquo;s <a href="http://rails4.codeschool.com/">Rails 4: Zombie Outlaws</a> course where it&rsquo;s mention how
+to use it in cooperation with Redis.</p>
+
+<div class='pull-left code'>
+If you connected to this example in a browser, you&#8217;d see 3 lines of text then disconnect.
+</div>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ActivitiesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Live</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>    <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">[</span><span class="s2">&quot;Content-Type&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;text/event-stream&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="mi">3</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span> <span class="s2">&quot;data: Iteration </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="nb">sleep</span> <span class="mi">3</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">rescue</span> <span class="no">IOError</span>
+</span><span class='line'>    <span class="c1"># Client disconnected</span>
+</span><span class='line'>  <span class="k">ensure</span>
+</span><span class='line'>    <span class="n">response</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">close</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Visiting this page isn&rsquo;t all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the <code>stream</code> is closed. This will end that server request,
+ending it for the user as well.</p>
+
+<blockquote><p>If you connected to this example in a browser, you&#8217;d see 3 lines of text then disconnect.</p></blockquote>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Rails Event Streaming Using EventSource]]></title>
     <link href="http://evaleverything.com/2013/09/02/rails-event-streaming-using-eventsource/"/>
     <updated>2013-09-02T18:25:00-04:00</updated>
     <id>http://evaleverything.com/2013/09/02/rails-event-streaming-using-eventsource</id>
-    <content type="html"><![CDATA[<h2>Testing this out</h2>
+    <content type="html"><![CDATA[<p>Rails 4 allows for keeping an open connection to your front end providing for partial updates with ease.</p>
 
-<p>Some post here.</p>
+<p>If you&rsquo;re on the fence about updating an older application to use Rails 4, the addition of <code>ActionController::Live</code>
+might be helpful in making your decision a little easier.</p>
+
+<h2>A Basic Connection</h2>
+
+<p>Aaron Patterson wrote a great post about <a href="http://tenderlovemaking.com/2012/07/30/is-it-live.html">Live Streaming in Rails</a>, over a year ago, but the interface is mostly
+the same today. That post is still a good starting point for <code>ActionController::Live</code>.</p>
+
+<p>I first ran into the subject when working on Code School&rsquo;s <a href="http://rails4.codeschool.com/">Rails 4: Zombie Outlaws</a> course where it&rsquo;s mention how
+to use it in cooperation with Redis.</p>
+
+<div class='pull-left code'>
+If you connected to this example in a browser, you&#8217;d see 3 lines of text then disconnect.
+</div>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ActivitiesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="kp">include</span> <span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Live</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>    <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">[</span><span class="s2">&quot;Content-Type&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;text/event-stream&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="mi">3</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span> <span class="s2">&quot;data: Iteration </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="nb">sleep</span> <span class="mi">3</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">rescue</span> <span class="no">IOError</span>
+</span><span class='line'>    <span class="c1"># Client disconnected</span>
+</span><span class='line'>  <span class="k">ensure</span>
+</span><span class='line'>    <span class="n">response</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">close</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Visiting this page isn&rsquo;t all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the <code>stream</code> is closed. This will end that server request,
+ending it for the user as well.</p>
+
+<blockquote><p>If you connected to this example in a browser, you&#8217;d see 3 lines of text then disconnect.</p></blockquote>
+
+
+
 ]]></content>
   </entry>
   

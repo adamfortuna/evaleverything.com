@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>eval Everything</title>
+  <title>Native JavaScript Notifications - eval Everything</title>
   <meta name="author" content="Adam Fortuna">
 
   
-  <meta name="description" content="Native JavaScript Notifications Written by Adam Fortuna on September 04, 2013 If you&rsquo;re on the fence about updating an older application to &hellip;">
+  <meta name="description" content="Native JavaScript Notifications Written by Adam Fortuna on September 04, 2013 Adam Fortuna is a developer at Code School writing and implementing &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://evaleverything.com">
+  <link rel="canonical" href="http://evaleverything.com/2013/09/04/native-javascript-notifications">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="eval Everything" type="application/atom+xml">
@@ -39,7 +39,7 @@ _gaq.push(['_trackPageview']);
 
 </head>
 
-<body class="home">
+<body class="post">
 
 <header class='topbar' role="banner">
   <div class="container">
@@ -68,7 +68,7 @@ _gaq.push(['_trackPageview']);
 <main id='content' role='main'>
   
   
-    <article>
+  <article>
   <header>
     <div class='container'>
       <div class='col-md-7 col-md-offset-2'>
@@ -83,6 +83,12 @@ _gaq.push(['_trackPageview']);
   <div class='container content'>
     <section class='col-md-7 col-md-offset-2'>
     
+      
+        <div class='pull-right author'>
+          <img src='/images/adam-fortuna.jpg' alt='Adam Fortuna' class='img-rounded'/>
+          <p><a href='http://adamfortuna'>Adam Fortuna</a> is a developer at <a href='http://codeshool.com'>Code School</a> writing and implementing educational courses with a focus on JavaScript and Ruby on Rails.</span>
+          </p>
+        </div>
       
 
       <div class='post-content'>
@@ -155,108 +161,16 @@ ending it for the user as well.</p>
   </div>
 
   
-</article>
-  
-    <article>
-  <header>
-    <div class='container'>
-      <div class='col-md-7 col-md-offset-2'>
-        <h1 class="title">
-          <a href="/2013/09/02/rails-event-streaming-using-eventsource/">Rails Event Streaming Using EventSource</a>
-        </h1>
-        <p class='meta'>Written by Adam Fortuna on September 02, 2013</p>
+    <div class='comments'>
+      <div class='container'>
+        <section class='col-md-7 col-md-offset-2'>
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </section>
       </div>
     </div>
-  </header>
-
-  <div class='container content'>
-    <section class='col-md-7 col-md-offset-2'>
-    
-      
-
-      <div class='post-content'>
-        
-          <p>Rails 4 allows for keeping an open connection to your front end providing for partial updates with ease.</p>
-
-<p>If you&rsquo;re on the fence about updating an older application to use Rails 4, the addition of <code>ActionController::Live</code>
-might be helpful in making your decision a little easier.</p>
-
-<h2>A Basic Connection</h2>
-
-<p>Aaron Patterson wrote a great post about <a href="http://tenderlovemaking.com/2012/07/30/is-it-live.html">Live Streaming in Rails</a>, over a year ago, but the interface is mostly
-the same today. That post is still a good starting point for <code>ActionController::Live</code>.</p>
-
-<p>I first ran into the subject when working on Code School&rsquo;s <a href="http://rails4.codeschool.com/">Rails 4: Zombie Outlaws</a> course where it&rsquo;s mention how
-to use it in cooperation with Redis.</p>
-
-<div class='pull-left code'>
-If you connected to this example in a browser, you&#8217;d see 3 lines of text then disconnect.
-</div>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">ActivitiesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-</span><span class='line'>  <span class="kp">include</span> <span class="ss">ActionController</span><span class="p">:</span><span class="ss">:Live</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>    <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">[</span><span class="s2">&quot;Content-Type&quot;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;text/event-stream&quot;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="mi">3</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">response</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">write</span> <span class="s2">&quot;data: Iteration </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">&quot;</span>
-</span><span class='line'>      <span class="nb">sleep</span> <span class="mi">3</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">rescue</span> <span class="no">IOError</span>
-</span><span class='line'>    <span class="c1"># Client disconnected</span>
-</span><span class='line'>  <span class="k">ensure</span>
-</span><span class='line'>    <span class="n">response</span><span class="o">.</span><span class="n">stream</span><span class="o">.</span><span class="n">close</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Visiting this page isn&rsquo;t all that interesting, but all the components are there. The connection is established, data is
-writtten back to it, then once there is nothing more to send, the <code>stream</code> is closed. This will end that server request,
-ending it for the user as well.</p>
-
-<blockquote><p>If you connected to this example in a browser, you&#8217;d see 3 lines of text then disconnect.</p></blockquote>
-
-
-
-
-        
-      </div>
-    </section>    
-  </div>
-
   
 </article>
-  
-
-  <div class="row-fluid">
-  <div class="span12">
-    <ul class="pager">
-      
-      
-    </ul>
-  </div>
-</div>
 </main>
 
 <footer>
