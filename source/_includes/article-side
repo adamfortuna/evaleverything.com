@@ -1,0 +1,15 @@
+<footer>
+        <dl class="dl-horizontal">
+          <dt><i class="glyphicon glyphicon-pencil"></i> <span>Author</span></dt>
+          <dd>{{ post.author }}</dd>
+
+          <dt><i class="glyphicon glyphicon-calendar"></i> <span>Date</span></dt>
+          <dd><time datetime="{{ post.date|date_to_string }}" pubdate="">{{ post.date|date_to_string }}</time></dd>
+
+          <dt><i class="glyphicon glyphicon-comment"></i> <span>Comments</span></dt>
+          <dd><a href='{{ post.url }}#disqus_thread'>comments</a></dd>
+
+          <dt><i class="glyphicon glyphicon-tag"></i> <span>Tags</span></dt>
+          <dd>{% include post/tags.html %}</dd>
+        </dl>
+      </footer>

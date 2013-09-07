@@ -1,0 +1,34 @@
+---
+layout: default
+---
+<article>
+  <header>
+    <h1>
+      <a class="brand" href="{{ page.url }}" rel="bookmark">
+        {{ page.title }}
+      </a>
+    </h1>
+  </header>
+  <footer>
+    <div class="meta horizontal">
+      <ul>
+        <li>
+          <i class="sprite calendar"></i>
+          <span>{{ page.date|date_to_string }}</span>
+        </li>
+        <li>
+          <i class="sprite comment"></i>
+          <span><a href="{{ post.url }}#disqus_thread">comments</a></span>
+        </li>
+        <li class="hidden-phone">
+          <i class="sprite tag"></i>
+          <span>{% include post/tags.html %}</span>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <div class="post">
+    {{ content }}
+  </div>
+  <div id="disqus_thread"></div>
+</article>

@@ -8,7 +8,7 @@ http_path = "/evaleverything/"
 http_images_path = "/evaleverything/images"
 http_generated_images_path = "/images"
 http_fonts_path = "/evaleverything/fonts"
-css_dir = "public/evaleverything/stylesheets"
+css_dir = "public/stylesheets"
 
 # Local development paths
 sass_dir = "sass"
