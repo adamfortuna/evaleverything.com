@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[eval Everything]]></title>
+  <title><![CDATA[eval everything]]></title>
   <link href="http://evaleverything.com/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-09-06T20:57:34-04:00</updated>
+  <updated>2013-09-07T19:28:52-04:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -78,7 +78,24 @@ ending it for the user as well.</p>
 <blockquote><p>If you connected to this example in a browser, you&#8217;d see 3 lines of text then disconnect.</p></blockquote>
 
 
+<p>Visiting this page isn&rsquo;t all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the <code>stream</code> is closed. This will end that server request,
+ending it for the user as well.</p>
 
+<p>Visiting this page isn&rsquo;t all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the <code>stream</code> is closed. This will end that server request,
+ending it for the user as well.</p>
+
+<ul>
+<li>Some list here</li>
+<li>With multiple elements</li>
+<li>how does it look?</li>
+</ul>
+
+
+<p>Visiting this page isn&rsquo;t all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the <code>stream</code> is closed. This will end that server request,
+ending it for the user as well.</p>
 ]]></content>
   </entry>
   

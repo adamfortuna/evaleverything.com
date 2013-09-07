@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: Rails | eval everything]]></title>
+  <link href="http://evaleverything.com/tags/rails/atom.xml" rel="self"/>
+  <link href="http://evaleverything.com/"/>
+  <updated>2013-09-07T19:28:52-04:00</updated>
+  <id>http://evaleverything.com/</id>
+  <author>
+    <name><![CDATA[Adam Fortuna]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Event Streaming Using EventSource]]></title>
+    <link href="http://evaleverything.com/2013/09/02/rails-event-streaming-using-eventsource/"/>
+    <updated>2013-09-02T18:25:00-04:00</updated>
+    <id>http://evaleverything.com/2013/09/02/rails-event-streaming-using-eventsource</id>
+    <content type="html"><![CDATA[<p>Rails 4 allows for keeping an open connection to your front end providing for partial updates with ease.</p>
+
+<p>If you&rsquo;re on the fence about updating an older application to use Rails 4, the addition of <code>ActionController::Live</code>
+might be helpful in making your decision a little easier.</p>
+
+<h2>A Basic Connection</h2>
+
+<p>Aaron Patterson wrote a great post about <a href="http://tenderlovemaking.com/2012/07/30/is-it-live.html">Live Streaming in Rails</a>, over a year ago, but the interface is mostly
+the same today. That post is still a good starting point for <code>ActionController::Live</code>.</p>
+
+<p>I first ran into the subject when working on Code School&rsquo;s <a href="http://rails4.codeschool.com/">Rails 4: Zombie Outlaws</a> course where it&rsquo;s mention how
+to use it in cooperation with Redis.</p>
+
+<p><div class='pull-left code'>
+If you connected to this example in a browser, you&rsquo;d see 3 lines of text then disconnect.
+</div></p>
+
+<p>```ruby
+class ActivitiesController &lt; ApplicationController
+  include ActionController::Live</p>
+
+<p>  def index</p>
+
+<pre><code>response.headers["Content-Type"] = "text/event-stream"
+
+3.times do |i|
+  response.stream.write "data: Iteration #{i}\n\n"
+  sleep 3
+end
+</code></pre>
+
+<p>  rescue IOError</p>
+
+<pre><code># Client disconnected
+</code></pre>
+
+<p>  ensure</p>
+
+<pre><code>response.stream.close
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Visiting this page isn&rsquo;t all that interesting, but all the components are there. The connection is established, data is
+writtten back to it, then once there is nothing more to send, the <code>stream</code> is closed. This will end that server request,
+ending it for the user as well.</p>
+
+<p><blockquote><p>If you connected to this example in a browser, you&rsquo;d see 3 lines of text then disconnect.</p></blockquote></p>
+]]></content>
+  </entry>
+  
+</feed>
