@@ -6,11 +6,11 @@ article
       a:hover 
         text-decoration: underline
     .meta  
-      color: $c-article-subheaderColor
+      color: darken($c-article-subheaderColor, 50%)
       font-size: 14px
   section 
     line-height: 1.5
-    border-bottom: 1px solid lighten($c-header-backgroundColor, 60%)
+    border-bottom: 1px solid lighten($c-header-backgroundColor, 30%)
     padding-bottom: 2em
     p 
       margin-bottom: 1em
@@ -27,7 +27,7 @@ body.home
     padding-top: 2em
     h1 
       a, a:hover 
-        color: #444
+        color: #555
     &:last-of-type 
       .content section 
         border: none
