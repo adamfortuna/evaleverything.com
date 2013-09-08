@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Designing eval everything - eval everything</title>
+  <meta name="author" content="Adam Fortuna">
+
+  
+  <meta name="description" content="Designing eval everything Written September 10, 2013 | Comments | Design Adam Fortuna works at Code School with a focus on JavaScript, Ruby, Rails & &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://evaleverything.com/2013/09/10/designing-eval-everything">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="eval everything" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-90326-16']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body class="post">
+
+<div id='wrap'>
+<header class='topbar' role="banner">
+  <div class="container">
+    <div class="col-md-7 col-md-offset-2">
+      <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="/" class="navbar-brand">eval everything</a>
+      </div>
+      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/">Latest</a></li>
+          <li><a href="/archives">Archives</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+
+<main id='content' role='main'>
+  
+  
+  <article>
+  <header>
+    <div class='container'>
+      <div class='col-md-7 col-md-offset-2'>
+        <h1 class="title">
+          <a href="/2013/09/10/designing-eval-everything/">Designing eval everything</a>
+        </h1>
+        <p class='meta'>
+          Written September 10, 2013
+          | <a href="#comments">Comments</a>
+          | <a class='tag' href='/tags/design/'>Design</a>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <div class='container content'>
+    <section class='col-md-7 col-md-offset-2'>
+    
+      
+        <div class='pull-right author'>
+  <img src='/images/adam-fortuna.jpg' alt='Adam Fortuna' class='img-rounded'/>
+  <p><a href='http://adamfortuna.com'>Adam Fortuna</a> works at <a href='http://codeshool.com'>Code School</a> with a focus on JavaScript, Ruby, Rails &amp; improving education.</span>
+  </p>
+</div>
+      
+
+      <div class='post-content'>
+        
+          <p>I&rsquo;m not a designer. My last attempt at design was my <a href="http://blog.adamfortuna.com/">personal blog</a> (<a href="/images/posts/designing-eval-everything/blog-adamfortuna-com.png">screenshot for posterity</a>), which is far from a masterpiece. When starting this blog, I decided it was time to put some of what I&rsquo;ve learned from the design talent at <a href="http://codeschool.com">Code School</a> to use and see if my eye had improved.</p>
+
+<h2>Octopress</h2>
+
+<p>First step was going with <a href="http://octopress.org/">Octopress</a> and by extention <a href="http://github.com/mojombo/jekyll">Jekyll</a>. My last blog was on Jekyll, and I was always a little jelous of how easily it looked to get started with Octopress. The default theme also has Sass and Compass integration right away, which helps in getting started.</p>
+
+<p>Rather than starting from the default theme and making tweaks, I everything away and started writing the HTML and Sass from scratch, which is something Octopress makes incredibly easy.</p>
+
+<div class='pull-left '><p><img src="/images/posts/designing-eval-everything/sass.png" alt="Assembling Sass" class="icon" /></p>
+</div>
+
+
+<h2>Sass</h2>
+
+<p>Sass is the language of choice for the designers at Code School. Specifically the sass style syntax, not the scss style. Code School and each course we do uses Sass, which has slowly built up my confidence in the subject.</p>
+
+<p>I dug into the Ruby Sass gem to help build out the technical side of our Sass course, <a href="http://www.codeschool.com/courses/assembling-sass">Assembling Sass</a>, but it wasn&rsquo;t until I went through it and <a href="http://www.codeschool.com/courses/assembling-sass-part-2">Assembling Sass Part 2</a> that I started to feel like some of the gaps in my knowledge were filled in.</p>
+
+<h2>MVCSS</h2>
+
+<p><a href="http://nick-walsh.com/">Nick Walsh</a> and <a href="http://drewbarontini.com/">Drew Barontini</a> put together <a href="http://mvcss.github.io/">MVCSS</a> which we use on all projects through <a href="http://envylabs.com/">Envy Labs</a> and Code School. Here&rsquo;s how they describe MVCSS:</p>
+
+<blockquote><p>MVCSS is a Sass-based CSS architecture for creating predictable and maintainable application style.</p><footer><small>MVCSS</small> <cite><a href='http://mvcss.github.io/'>mvcss.github.io/&hellip;</a></cite></footer></blockquote>
+
+
+<p>MVCSS is less of framework that you use, and more of a way of organizing your files and markup in a predictable manner. Although I&rsquo;m not following all of the guidelines, the ones I am following do make things easier to maintain.</p>
+
+<div class='pull-left '><p><img src="/images/posts/designing-eval-everything/design.png" alt="Fundamentals of Design" class="icon" /></p>
+</div>
+
+
+<h2>Fundamentals of Design</h2>
+
+<p>In early August, Code School released a very different type of course called <a href="http://www.codeschool.com/courses/fundamentals-of-design">Fundamentals of Design</a> taught by <a href="http://timdikun.com">Tim Dikun</a>. This course hammers in 3 specific topics: typography, color and layout. Like most developers (and most people), I can view a design and have a reaction that it&rsquo;s good or off somehow. Usually though, I have no idea why it is off, or what I could do to improve it. That&rsquo;s where this course fit in &mdash; providing a bit of background on the topic.</p>
+
+<div class='pull-right '><p>This site uses the <a href="http://www.google.com/fonts/specimen/Droid+Sans">Droid Sans</a> font.</p>
+</div>
+
+
+<p>For instance, I&rsquo;ve never put much effort into choosing fonts. After going through this course I had a bit more confidence in choosing a font that might better match the content. I settled on <a href="http://www.google.com/fonts/specimen/Droid+Sans">Droid Sans</a>, one of the fonts mentioned in the course, and available for free on Google Fonts. It is apparently a <strong>Humanist Sans Serif</strong> font, which according to the course, is great for government or educational applications (I&rsquo;ll try to stay educational).</p>
+
+<h2>Ruby</h2>
+
+<div class='pull-right '><p>Want to see how these little pullouts are done? <a href="https://github.com/adamfortuna/evaleverything.com/blob/source/plugins/pullside.rb">View the plugin</a>.</p>
+</div>
+
+
+<p>It&rsquo;s not design, but a little ruby goes a long ways to filling in the gaps. It&rsquo;s dead simple to write plugins that will tie into the Markdown templating to add a bit of style if needed, like with the side pullouts used here. There are a bunch of others bundled with Octopress that are all basic Ruby and easy to understand if you want to see how something is formed.</p>
+
+<p>If you need additional power, you can also drop in any other gem. If you need to debug something, you can always slip a <code>binding.pry</code> in and experiment to get the output you desire.</p>
+
+<h2>Twitter Bootstrap</h2>
+
+<p>It&rsquo;s hard to mention Twitter Bootstrap to designers and not get an instant groan of pain. I imagine to some of them it&rsquo;s similar to starting up a Rails application using scaffolding, but putting it into production. That being said, it did help me get this site off the ground with some inteligent defaults in place.</p>
+
+<p>For the most part, Bootstrap is used only for the layout at this point. Ideally I&rsquo;ll strip it out some time in the future, but until then it&rsquo;s been an amazing tool to help me get started.</p>
+
+        
+      </div>
+    </section>    
+  </div>
+
+  
+    <div class='comments' id='comments'>
+      <div class='container'>
+        <section class='col-md-7 col-md-offset-2'>
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </section>
+      </div>
+    </div>
+  
+</article>
+</main>
+</div>
+<footer>
+  <div class='container'>
+    <div class='col-md-3 col-md-offset-2'>
+      <h2>About</h2>
+      <p>eval everything is place for me to write about things he comes across while working on Code School with a heavy focus on JavaScript, Backbone.js, Ember.js, jQuery, Ruby on Rails and D3.</p>
+    </div>
+
+    <div class='col-md-2'>
+      <h2>Posts By Tag</h2>
+      <ul>
+        <li><a href="/tags/javascript">JavaScript</a></li>
+        <li><a href="/tags/ruby">Ruby</a></li>
+      </ul>
+    </div>
+
+    <div class='col-md-2'>
+      <h2>Pages</h2>
+      <ul>
+        <li><a href="/">Latest</a></li>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+    </div>
+
+    <div class='col-md-3'>
+      <h2>Contact</h2>
+      <p>Follow me on <a href='http://twitter.com/adamfortuna' target='_blank'>Twitter</a></p>
+      <p>©2013 <a href='http://adamfortuna.com' target='_blank'>Adam Fortuna</a>.</p>
+      <p>Powered by <a href='http://octopress.org'>Octopress</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var disqus_shortname = "evaleverything";
+</script>
+<script src="//go.disqus.com/count.js" async></script>
+<script src="//go.disqus.com/embed.js" async></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-90326-16']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</body>
+</html>
