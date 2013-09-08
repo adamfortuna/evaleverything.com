@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://evaleverything.com/2013/09/02/rails-event-streaming-using-eventsource/</loc>
-        <lastmod>2013-09-06T20:40:44-04:00</lastmod>
+        <loc>http://evaleverything.com/2013/09/07/response-streams-with-rails-4-and-redis/</loc>
+        <lastmod>2013-09-07T22:49:43-04:00</lastmod>
     </url>
     <url>
-        <loc>http://evaleverything.com/2013/09/04/native-javascript-notifications/</loc>
-        <lastmod>2013-09-07T13:34:54-04:00</lastmod>
+        <loc>http://evaleverything.com/2013/09/14/native-javascript-notifications/</loc>
+        <lastmod>2013-09-08T01:04:35-04:00</lastmod>
     </url>
     <url>
         <loc>http://evaleverything.com/about/</loc>
-        <lastmod>2013-09-07T15:30:27-04:00</lastmod>
+        <lastmod>2013-09-07T19:34:24-04:00</lastmod>
     </url>
     <url>
         <loc>http://evaleverything.com/archives/</loc>
-        <lastmod>2013-09-07T15:45:18-04:00</lastmod>
+        <lastmod>2013-09-08T01:04:35-04:00</lastmod>
     </url>
     <url>
         <loc>http://evaleverything.com/</loc>
-        <lastmod>2013-09-07T16:02:25-04:00</lastmod>
+        <lastmod>2013-09-08T01:04:35-04:00</lastmod>
     </url>
     <url>
         <loc>http://evaleverything.com/robots.txt</loc>

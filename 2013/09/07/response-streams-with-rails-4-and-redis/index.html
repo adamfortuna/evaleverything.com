@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>eval everything</title>
+  <title>Response Streams with Rails 4 and Redis - eval everything</title>
   <meta name="author" content="Adam Fortuna">
 
   
-  <meta name="description" content="Native Notifications with JavaScript Written September 14, 2013 | Comments | JavaScript Adam Fortuna works at Code School with a focus on JavaScript &hellip;">
+  <meta name="description" content="Response Streams with Rails 4 and Redis Written September 07, 2013 | Comments | Rails, Redis, Ruby Adam Fortuna works at Code School with a focus on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://evaleverything.com">
+  <link rel="canonical" href="http://evaleverything.com/2013/09/07/response-streams-with-rails-4-and-redis">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="eval everything" type="application/atom+xml">
@@ -40,7 +40,7 @@
 
 </head>
 
-<body class="home">
+<body class="post">
 
 <div id='wrap'>
 <header class='topbar' role="banner">
@@ -70,18 +70,17 @@
 <main id='content' role='main'>
   
   
-  
-    <article>
+  <article>
   <header>
     <div class='container'>
       <div class='col-md-7 col-md-offset-2'>
         <h1 class="title">
-          <a href="/2013/09/14/native-javascript-notifications/">Native Notifications with JavaScript</a>
+          <a href="/2013/09/07/response-streams-with-rails-4-and-redis/">Response Streams with Rails 4 and Redis</a>
         </h1>
         <p class='meta'>
-          Written September 14, 2013
-          | <a href="/2013/09/14/native-javascript-notifications/#comments">Comments</a>
-          | <a class='tag' href='/tags/javascript/'>JavaScript</a>
+          Written September 07, 2013
+          | <a href="#comments">Comments</a>
+          | <a class='tag' href='/tags/rails/'>Rails</a>, <a class='tag' href='/tags/redis/'>Redis</a>, <a class='tag' href='/tags/ruby/'>Ruby</a>
         </p>
       </div>
     </div>
@@ -96,162 +95,6 @@
   <p><a href='http://adamfortuna.com'>Adam Fortuna</a> works at <a href='http://codeshool.com'>Code School</a> with a focus on JavaScript, Ruby, Rails &amp; improving education.</span>
   </p>
 </div>
-      
-
-      <div class='post-content'>
-        
-          <p>In browser notifications have made a lot of progress in the last few years. Hell, Native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using <a href="http://growl.info/">Growl</a>. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using Native Notifications.</p>
-
-<div class='pull-right '><p>Warning: Link to the official spec.</p>
-</div>
-
-
-<p>Notifications caught on with Mac App developers. <a href="http://notifications.spec.whatwg.org/">HTML 5 Notifications</a> have had a slower growth curve as the various browsers focus in on a single standard. As of this writing, here&rsquo;s a recap of where the different browsers stand when it comes to supporting notifications.</p>
-
-<p>OS X Mavericks has expanded support for notifications that builds heavily on this. Here&rsquo;s what&rsquo;s public on the topic so far:</p>
-
-<blockquote><p>Once users have signed up for notifications from your website in Safari, you can send them push notifications that appear just like app notifications, even when Safari isn’t running. Users can then click on your push notification to launch your website.</p><footer><small>OS X Mavericks for Developers</small> <cite><a href='https://developer.apple.com/osx/whats-new/'>developer.apple.com/osx/&hellip;</a></cite></footer></blockquote>
-
-
-<p>In other words, it&rsquo;s time to hop on board the notification train if you want another route of reaching your sites visitors. Let&rsquo;s check out how this applies to the different browsers.</p>
-
-<h2>Common Traits</h2>
-
-<div class='pull-right raw '><p>Read the source from this project to understand how browsers implement notifications</p>
-</div>
-
-
-<p>The major browsers (setting aside IE) have a few patterns in comon right now that we can use to style our behavior pattern around. If you want see how to use notifications in different browsers, check out the <a href="https://github.com/ttsvetko/HTML5-Desktop-Notifications/">HTML5 Desktop Notifications</a> project on GitHub. It&rsquo;s worth reading over the source code.</p>
-
-<h2>Request Permission</h2>
-
-<p>In order to send notifications in all browsers, you&rsquo;ll need to request permission to do so. In that very long spec, there are 3 permission levels noted:</p>
-
-<ul>
-<li><code>default</code> &ndash; No permission granted or denied</li>
-<li><code>granted</code> &ndash; The user has granted permission to send notifications</li>
-<li><code>denied</code> &ndash; The user has denied permission</li>
-</ul>
-
-
-<p>If permission is denied you won&rsquo;t be able to request permission again in the current session. If you try to send a notification without having been granted permission, nothing will happen.</p>
-
-<h2>Send Message</h2>
-
-<p>Once you have permission, you&rsquo;ll be able send down a notification with the following attributes:</p>
-
-<ul>
-<li><code>title</code> &ndash; Should be short and to the point</li>
-<li><code>body</code> &ndash; You&rsquo;ll have a bit more room to work with here. Unfortunately, in Safari this will be truncated</li>
-<li><code>icon</code> &ndash; In Chrome and Firefox, you can send over whatever icon you want. This isn&rsquo;t being served by Notification Center, so there is more flexibility here.</li>
-</ul>
-
-
-<p>When the message is shown, there are also a few events that we can tie into for added flexibility:</p>
-
-<ul>
-<li><code>onshow</code> &ndash; When the notification is first shown.</li>
-<li><code>onclick</code> &ndash;  When the user clicks on the notification. By default this will bring the window into focus.</li>
-<li><code>onclose</code> &ndash; When the notification is closed, either by the user or programatically.</li>
-<li><code>onerror</code> &ndash; Trigger if the notification cannot be presented to the user</li>
-</ul>
-
-
-<p>Here&rsquo;s a few examples of how these notifications look in different browsers.</p>
-
-<div class='pull-left '><p><img src="/images/icons/safari.png" alt="Safari" class="icon" /></p>
-</div>
-
-
-<h3>Safari</h3>
-
-<p>For Safari notifications, you won&rsquo;t be able to provide an icon unfortunately. Instead it&rsquo;ll always use the Safari icon. It will also show the hostname where the notification came from though, which is unique to Safari.</p>
-
-<p><img src="/images/posts/native-javascript-notifications/safari-notification-small.png" alt="Safari Notification" /></p>
-
-<p>One of the nice parts of this notification is that it will sync up with your other notifications. For instance, if you have one notification from XCode and another from a website, they&rsquo;ll show up stacked rather than on top of each other.</p>
-
-<h3>Mavericks</h3>
-
-<p>Not exactly a JavaScript implementation, but worth noting that notifications in Mavericks behave much differently than HTML 5 notifications. They more closely resemble iOS notifications, where you&rsquo;re pushing to Apple&rsquo;s servers, and they&rsquo;re pushing to the end user.</p>
-
-<p><img src="/images/posts/native-javascript-notifications/mavericks-notification-small.png" alt="Mavericks Notification" /></p>
-
-<p>The addition of a custom icon here is definitely a plus. This alert is from a <a href="http://kandutech.net/">Safari Push Notification Demo</a> which should only work if you&rsquo;re running Safari in Mavericks. If you clicked on that alert, you&rsquo;d get taken to a page that describes how it works:</p>
-
-<blockquote><p>When you allowed this website to send you push notifications, we generated a 4 digit code and put it in a database along with your Mac&#8217;s push token. When a push notification is triggered through our servers, we resolve the 4 digit code to your Mac&#8217;s token. Once we have your token, we tell Apple&#8217;s servers what the notification should look like, and where it should go. Apple&#8217;s push notification service then delivers the notification we generated to your Mac.</p><footer><small>Safari Push Notification Demo</small> <cite><a href='http://kandutech.net/clicked'>kandutech.net/clicked/&hellip;</a></cite></footer></blockquote>
-
-
-
-
-<div class='pull-left '><p><img src="/images/icons/chrome.png" alt="Chrome" class="icon" /></p>
-</div>
-
-
-<h3>Chrome</h3>
-
-<p>Chrome notifications show up square, which stands out from the rounded look of OS X and Firefox notifications. It also shows up larger in all dimensions</p>
-
-<div class='pull-right '><p>Chromes notifications are significantly larger than Notification Center.</p>
-</div>
-
-
-<p><img src="/images/posts/native-javascript-notifications/chrome-notification-small.png" alt="Chrome Notification" /></p>
-
-<p>Unlike Safari notifications, this will stay up until it is dismissed.</p>
-
-<div class='pull-left '><p><img src="/images/icons/firefox.png" alt="Firefox" class="icon" /></p>
-</div>
-
-
-<h3>Firefox</h3>
-
-<p>The Firefox notification would be pretiest out of the box, but the entire body is shown as a link! For all notifications, clicking on it takes you to the page, but Firefox attempts to make it more apparent. The appearance end up suffering due to this choice.</p>
-
-<div class='pull-right '><p>Why is the body a link Firefox? WHY?</p>
-</div>
-
-
-<p><img src="/images/posts/native-javascript-notifications/firefox-notification-small.png" alt="Firefox Notification" /></p>
-
-<h3>Windows</h3>
-
-<p>While there are no system level notifications in Windows (I don&rsquo;t think?), it does allow you to add an icon overlay on the Internet Explorer icon. This allows for some feedback in this browser.</p>
-
-<p>Chrome and Firefox on Windows support notifications that behave similar to their Mac counterparts.</p>
-
-<h2>Demo</h2>
-
-<p>Want to see how notifications look in your browser? Try out the <a href="http://ttsvetko.github.io/HTML5-Desktop-Notifications/">HTML5 Notifications Demo</a> to find out.</p>
-
-        
-      </div>
-    </section>    
-  </div>
-
-  
-</article>
-    
-  
-    <article>
-  <header>
-    <div class='container'>
-      <div class='col-md-7 col-md-offset-2'>
-        <h1 class="title">
-          <a href="/2013/09/07/response-streams-with-rails-4-and-redis/">Response Streams with Rails 4 and Redis</a>
-        </h1>
-        <p class='meta'>
-          Written September 07, 2013
-          | <a href="/2013/09/07/response-streams-with-rails-4-and-redis/#comments">Comments</a>
-          | <a class='tag' href='/tags/rails/'>Rails</a>, <a class='tag' href='/tags/redis/'>Redis</a>, <a class='tag' href='/tags/ruby/'>Ruby</a>
-        </p>
-      </div>
-    </div>
-  </header>
-
-  <div class='container content'>
-    <section class='col-md-7 col-md-offset-2'>
-    
       
 
       <div class='post-content'>
@@ -417,18 +260,16 @@
   </div>
 
   
-</article>
-    
+    <div class='comments' id='comments'>
+      <div class='container'>
+        <section class='col-md-7 col-md-offset-2'>
+          <h2>Comments</h2>
+          <div id="disqus_thread"></div>
+        </section>
+      </div>
+    </div>
   
-
-  <div class="row-fluid">
-  <div class="span12">
-    <ul class="pager">
-      
-      
-    </ul>
-  </div>
-</div>
+</article>
 </main>
 </div>
 <footer>
