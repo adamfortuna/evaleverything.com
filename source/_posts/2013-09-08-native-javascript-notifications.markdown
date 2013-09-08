@@ -106,7 +106,7 @@ Unlike Safari notifications, this will stay up until it is dismissed.
 
 ### Firefox
 
-The Firefox notification would be pretiest out of the box, but the entire body is shown as a link! For all notifications, clicking on it takes you to the page, but Firefox attempts to make it more apparent. The appearance end up suffering due to this choice.
+The Firefox notification would be pretiest out of the box, but the entire body is shown as a link! For all notifications, clicking on it takes you to the page, but Firefox attempts to make it more apparent. The appearance ends up suffering due to this choice.
 
 {% pullside right %}
 Why is the body a link Firefox? WHY?
