@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Redis | eval everything]]></title>
   <link href="http://evaleverything.com/tags/redis/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-09-08T15:00:05-04:00</updated>
+  <updated>2013-09-08T15:45:28-04:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -27,7 +27,7 @@
 
 <p>Aaron Patterson wrote a great post about <a href="http://tenderlovemaking.com/2012/07/30/is-it-live.html">Live Streaming in Rails</a>, over a year ago, but the interface is mostly the same today. That post is still a good starting point for <code>ActionController::Live</code>.</p>
 
-<p>I first ran into the subject when working on Code School&rsquo;s <a href="http://rails4.codeschool.com/">Rails 4: Zombie Outlaws</a> course where the last level is all about streaming, with a mention towards the end about using it in ccooperation with Redis. The example we show in that</p>
+<p>I first ran into the subject when working on Code School&rsquo;s <a href="http://rails4.codeschool.com/">Rails 4: Zombie Outlaws</a> course where the last level is all about streaming, with a mention towards the end about using it in cooperation with Redis. The example we show in that</p>
 
 <p><div class='pull-left code '><p>If you connected to this endpoint in a browser, it’d load forever and occasionally send back responses to the browser</p>
 </div></p>
