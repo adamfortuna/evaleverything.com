@@ -1,8 +1,12 @@
++respond-to(993px)
+  article 
+    section
+      figure.code 
+        width: 150%
+
 article 
   header 
     margin-bottom: 1em
-    h1 
-      width: 130%
     .meta  
       color: darken($c-article-subheaderColor, 50%)
       font-size: 14px
@@ -12,8 +16,6 @@ article
     padding-bottom: 2em
     p 
       margin-bottom: 1em
-    figure.code 
-      width: 150%
     code 
       color: $c-code-color
       background-color: $c-code-color-background
@@ -37,6 +39,28 @@ body.home
       .content section 
         border: none
         padding-bottom: 0
+
+
++respond-to(1200px, max-width)
+  body.post 
+    article 
+      header
+        h1
+          font-size: 36px !important
+
++respond-to(993px, max-width)
+  body.post 
+    article 
+      header
+        h1
+          font-size: 30px !important
+
++respond-to(768px, max-width)
+  body.post 
+    article 
+      header
+        h1
+          font-size: 28px !important
 
 body.post 
   article 

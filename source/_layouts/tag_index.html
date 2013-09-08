@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: archive
 footer: false
 ---
 
@@ -9,15 +9,13 @@ footer: false
     {% unless year == this_year %}
       {% assign year = this_year %}
       {% unless forloop.first %}
-        </div></div><div class="year container">
+        </div></div><div class="year">
       {% else %}
-        <div class="year container">
+        <div class="year">
       {% endunless %}
 
-        <div class="col-md-2">
-          <h2 class="year">{{ year }}</h2>
-        </div>
-        <div class="col-md-10">
+        <h2 class="year col-md-1">{{ year }}</h2>
+        <div class="col-md-11">
     {% endunless %}
 
     <article>

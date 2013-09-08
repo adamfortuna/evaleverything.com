@@ -114,15 +114,25 @@ Why is the body a link Firefox? WHY?
 
 ![Firefox Notification](/images/posts/native-javascript-notifications/firefox-notification-small.png)
 
+{% pullside left %}
+![Chrome](/images/icons/ie.png){: .icon}
+{% endpullside %}
 ### Windows
 
-While there are no system level notifications in Windows (I don't think?), it does allow you to add an icon overlay on the Internet Explorer icon. This allows for some feedback in this browser.
+While there are no system level notifications in Windows (I don't think?), but Internet Explorer 9 and up allow you to add an icon overlay on the browsers icon. This allows for some feedback in this browser. You can see an example of this in the Readme for the [HTML5 Desktop Notifications][] project on GitHub.
 
 Chrome and Firefox on Windows support notifications that behave similar to their Mac counterparts.
 
 ## Demo
 
 Want to see how notifications look in your browser? Try out the [HTML5 Notifications Demo][] to find out.
+
+{% credits %}
+1. Icons for Safari, Chrome and Firefox by [Stefano Tirloni](http://dribbble.com/shots/1032875-Flat-Icons).
+2. Internet Explorer Icon by [1 Little Designer](http://onelittledesigner.com/rapidweaver/web-icons/free-flat-browser-icons/).
+{% endcredits %}
+
+
 
 
 [Growl]:http://growl.info/

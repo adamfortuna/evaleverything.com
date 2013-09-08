@@ -24,3 +24,16 @@ header.topbar
     &:hover
       background-color: darken($c-header-backgroundColor, 15%)
       color: lighten(#346750, 60%)
+
+  .navbar-header
+    min-width: 230px
+  nav
+    min-width: 185px
+    .navbar-nav
+      margin: 0px -15px
+      >li
+        float: right
+
++respond-to(640px, max-width)
+  header.topbar .nav>li>a
+    padding: 24px 12px

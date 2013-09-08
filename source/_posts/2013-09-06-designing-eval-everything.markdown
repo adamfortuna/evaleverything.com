@@ -68,6 +68,36 @@ It's hard to mention Twitter Bootstrap to designers and not get an instant groan
 For the most part, Bootstrap is used only for the layout at this point. Ideally I'll strip it out some time in the future, but until then it's been an amazing tool to help me get started.
 
 
+## Write Your First 3 Posts
+
+{% pullside left %}
+Things like this will standout if you design around your content.
+{% endpullside %}
+
+For me it was impossible to know everything I needed from a design standpoint until writing a few posts. I started out with some sample filler text, but quickly realized it was missing a number of features.
+
+After writing these first three posts, each day I'd look at it with a new eye and pick out what I saw as the part that needed the most work. Usually I didn't know what I could do at a glance, so it was a matter of experimenting with color, position and typography until it looked right.
+
+## Logo
+
+The logo at the time of this writing is only a placeholder until getting something else in there. At first glance it's a little too similar to the Internet Explorer icon for my liking.
+
+## Responsive Design
+
+One of the advantages of using Twitter Bootstrap is the build in responsive design functionality. A lot of this will _just work_ so long as you follow the grid conventions. This is easier said than done -- especially when a number of elements aren't controlled through Bootstrap. Making the footer responsive was as easy as adding a few `col-md-3`, `col-xs-12` and `col-sm-4` classes to various sections.
+
+MVCSS has a super-simple `+respond-to` mixin that helps in controlling these too. For instance, at lower resolutions, the side panels are no longer shown.
+
+```sass
++respond-to(993px, max-width)
+  .pull-left, 
+  .pull-right
+    float: none !important
+```
+
+This will create the `@media` query needed for this setup. I'm sure as I rip out Bootstrap and try to recreate parts on my own, I'll be using this much more.
+
+
 [personal blog]:http://blog.adamfortuna.com/
 [screenshot for posterity]:/images/posts/designing-eval-everything/blog-adamfortuna-com.png
 [Code School]:http://codeschool.com

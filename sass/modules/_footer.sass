@@ -1,4 +1,4 @@
-$footer-height: 250px
+$footer-height: 450px
 
 html,
 body
@@ -44,6 +44,18 @@ body > footer
   p 
     line-height: 1.5
 
++respond-to(768px)
+  $footer-height: 300px
+  #wrap
+    margin: 0 auto (-1 * $footer-height)
+    padding: 0 0 $footer-height
+  body > footer
+    height: $footer-height
 
-+respond-to(680px, max-width)
-  display: none
++respond-to(993px)
+  $footer-height: 250px
+  #wrap
+    margin: 0 auto (-1 * $footer-height)
+    padding: 0 0 $footer-height
+  body > footer
+    height: $footer-height
