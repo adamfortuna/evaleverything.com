@@ -28,23 +28,18 @@
 <div id='wrap'>
 <header class='topbar' role="banner">
   <div class="container">
-    <div class="col-md-7 col-md-offset-2">
+    <div class='col-md-offset-2 col-lg-4 col-sm-6 col-md-4 col-xs-6'>
       <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
         <a href="/" class="navbar-brand">eval everything</a>
       </div>
-      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">Latest</a></li>
-          <li><a href="/archives">Archives</a></li>
-        </ul>
-      </nav>
     </div>
+
+    <nav role="navigation" class='col-lg-3 col-sm-6 col-md-4 col-xs-5'>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Latest</a></li>
+        <li><a href="/archives">Archives</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -57,7 +52,7 @@
     <article>
   <header>
     <div class='container'>
-      <div class='col-md-7 col-md-offset-2'>
+      <div class='col-md-10 col-md-offset-2'>
         <h1 class="title">
           <a href="/2013/09/08/native-javascript-notifications/">Native Notifications with JavaScript</a>
         </h1>
@@ -197,15 +192,28 @@
 
 <p><img src="/images/posts/native-javascript-notifications/firefox-notification-small.png" alt="Firefox Notification" /></p>
 
+<div class='pull-left '><p><img src="/images/icons/ie.png" alt="Chrome" class="icon" /></p>
+</div>
+
+
 <h3>Windows</h3>
 
-<p>While there are no system level notifications in Windows (I don&rsquo;t think?), it does allow you to add an icon overlay on the Internet Explorer icon. This allows for some feedback in this browser.</p>
+<p>While there are no system level notifications in Windows (I don&rsquo;t think?), but Internet Explorer 9 and up allow you to add an icon overlay on the browsers icon. This allows for some feedback in this browser. You can see an example of this in the Readme for the <a href="https://github.com/ttsvetko/HTML5-Desktop-Notifications/">HTML5 Desktop Notifications</a> project on GitHub.</p>
 
 <p>Chrome and Firefox on Windows support notifications that behave similar to their Mac counterparts.</p>
 
 <h2>Demo</h2>
 
 <p>Want to see how notifications look in your browser? Try out the <a href="http://ttsvetko.github.io/HTML5-Desktop-Notifications/">HTML5 Notifications Demo</a> to find out.</p>
+
+<div class='credits'><h2>Credits</h2><ol>
+  <li>Icons for Safari, Chrome and Firefox by <a href="http://dribbble.com/shots/1032875-Flat-Icons">Stefano Tirloni</a>.</li>
+  <li>Internet Explorer Icon by <a href="http://onelittledesigner.com/rapidweaver/web-icons/free-flat-browser-icons/">1 Little Designer</a>.</li>
+</ol>
+</div>
+
+
+
 
         
       </div>
@@ -219,7 +227,7 @@
     <article>
   <header>
     <div class='container'>
-      <div class='col-md-7 col-md-offset-2'>
+      <div class='col-md-10 col-md-offset-2'>
         <h1 class="title">
           <a href="/2013/09/07/response-streams-with-rails-4-and-redis/">Response Streams with Rails 4 and Redis</a>
         </h1>
@@ -406,7 +414,7 @@
     <article>
   <header>
     <div class='container'>
-      <div class='col-md-7 col-md-offset-2'>
+      <div class='col-md-10 col-md-offset-2'>
         <h1 class="title">
           <a href="/2013/09/06/designing-eval-everything/">Designing eval everything</a>
         </h1>
@@ -483,6 +491,39 @@
 
 <p>For the most part, Bootstrap is used only for the layout at this point. Ideally I&rsquo;ll strip it out some time in the future, but until then it&rsquo;s been an amazing tool to help me get started.</p>
 
+<h2>Write Your First 3 Posts</h2>
+
+<div class='pull-left '><p>Things like this will standout if you design around your content.</p>
+</div>
+
+
+<p>For me it was impossible to know everything I needed from a design standpoint until writing a few posts. I started out with some sample filler text, but quickly realized it was missing a number of features.</p>
+
+<p>After writing these first three posts, each day I&rsquo;d look at it with a new eye and pick out what I saw as the part that needed the most work. Usually I didn&rsquo;t know what I could do at a glance, so it was a matter of experimenting with color, position and typography until it looked right.</p>
+
+<h2>Logo</h2>
+
+<p>The logo at the time of this writing is only a placeholder until getting something else in there. At first glance it&rsquo;s a little too similar to the Internet Explorer icon for my liking.</p>
+
+<h2>Responsive Design</h2>
+
+<p>One of the advantages of using Twitter Bootstrap is the build in responsive design functionality. A lot of this will <em>just work</em> so long as you follow the grid conventions. This is easier said than done &mdash; especially when a number of elements aren&rsquo;t controlled through Bootstrap. Making the footer responsive was as easy as adding a few <code>col-md-3</code>, <code>col-xs-12</code> and <code>col-sm-4</code> classes to various sections.</p>
+
+<p>MVCSS has a super-simple <code>+respond-to</code> mixin that helps in controlling these too. For instance, at lower resolutions, the side panels are no longer shown.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='sass'><span class='line'><span class="nd">+respond-to</span><span class="p">(</span><span class="mi">993</span><span class="kt">px</span><span class="o">,</span> <span class="no">max-width</span><span class="p">)</span>
+</span><span class='line'>  <span class="nc">.pull-left</span><span class="o">,</span>
+</span><span class='line'>  <span class="nc">.pull-right</span>
+</span><span class='line'>    <span class="na">float</span><span class="o">:</span> <span class="no">none</span> <span class="nv">!important</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This will create the <code>@media</code> query needed for this setup. I&rsquo;m sure as I rip out Bootstrap and try to recreate parts on my own, I&rsquo;ll be using this much more.</p>
+
         
       </div>
     </section>    
@@ -505,12 +546,12 @@
 </div>
 <footer>
   <div class='container'>
-    <div class='col-md-3 col-md-offset-2'>
+    <div class='col-md-3 col-md-offset-2 col-xs-12'>
       <h2>About</h2>
-      <p>eval everything is place for me to write about things he comes across while working on Code School with a heavy focus on JavaScript, Backbone.js, Ember.js, jQuery, Ruby on Rails and D3.</p>
+      <p>eval everything is a blog written by Adam Fortuna with a focus on Ruby, JavaScript and web development. You'll find posts about whatever comes along when working on Code School.</p>
     </div>
 
-    <div class='col-md-2'>
+    <div class='col-md-2 col-xs-6 col-sm-4'>
       <h2>Posts By Tag</h2>
       <ul>
         <li><a href="/tags/javascript">JavaScript</a></li>
@@ -518,16 +559,16 @@
       </ul>
     </div>
 
-    <div class='col-md-2'>
+    <div class='col-md-2 col-xs-6 col-sm-4'>
       <h2>Pages</h2>
       <ul>
         <li><a href="/">Latest</a></li>
-        <li><a href="/archive">Archive</a></li>
+        <li><a href="/archives">Archive</a></li>
         <li><a href="/about">About</a></li>
       </ul>
     </div>
 
-    <div class='col-md-3'>
+    <div class='col-md-3 col-xs-12 col-sm-4'>
       <h2>Contact</h2>
       <p>Follow me on <a href='http://twitter.com/adamfortuna' target='_blank'>Twitter</a></p>
       <p>©2013 <a href='http://adamfortuna.com' target='_blank'>Adam Fortuna</a>.</p>

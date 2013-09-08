@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Design | eval everything]]></title>
   <link href="http://evaleverything.com/tags/design/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-09-08T11:41:17-04:00</updated>
+  <updated>2013-09-08T15:00:05-04:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -69,6 +69,37 @@
 <p>It&rsquo;s hard to mention Twitter Bootstrap to designers and not get an instant groan of pain. I imagine to some of them it&rsquo;s similar to starting up a Rails application using scaffolding, but putting it into production. That being said, it did help me get this site off the ground with some inteligent defaults in place.</p>
 
 <p>For the most part, Bootstrap is used only for the layout at this point. Ideally I&rsquo;ll strip it out some time in the future, but until then it&rsquo;s been an amazing tool to help me get started.</p>
+
+<h2>Write Your First 3 Posts</h2>
+
+<p><div class='pull-left '><p>Things like this will standout if you design around your content.</p>
+</div></p>
+
+<p>For me it was impossible to know everything I needed from a design standpoint until writing a few posts. I started out with some sample filler text, but quickly realized it was missing a number of features.</p>
+
+<p>After writing these first three posts, each day I&rsquo;d look at it with a new eye and pick out what I saw as the part that needed the most work. Usually I didn&rsquo;t know what I could do at a glance, so it was a matter of experimenting with color, position and typography until it looked right.</p>
+
+<h2>Logo</h2>
+
+<p>The logo at the time of this writing is only a placeholder until getting something else in there. At first glance it&rsquo;s a little too similar to the Internet Explorer icon for my liking.</p>
+
+<h2>Responsive Design</h2>
+
+<p>One of the advantages of using Twitter Bootstrap is the build in responsive design functionality. A lot of this will <em>just work</em> so long as you follow the grid conventions. This is easier said than done &mdash; especially when a number of elements aren&rsquo;t controlled through Bootstrap. Making the footer responsive was as easy as adding a few <code>col-md-3</code>, <code>col-xs-12</code> and <code>col-sm-4</code> classes to various sections.</p>
+
+<p>MVCSS has a super-simple <code>+respond-to</code> mixin that helps in controlling these too. For instance, at lower resolutions, the side panels are no longer shown.</p>
+
+<p>```sass
++respond-to(993px, max-width)
+  .pull-left,
+  .pull-right</p>
+
+<pre><code>float: none !important
+</code></pre>
+
+<p>```</p>
+
+<p>This will create the <code>@media</code> query needed for this setup. I&rsquo;m sure as I rip out Bootstrap and try to recreate parts on my own, I&rsquo;ll be using this much more.</p>
 ]]></content>
   </entry>
   

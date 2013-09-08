@@ -28,23 +28,18 @@
 <div id='wrap'>
 <header class='topbar' role="banner">
   <div class="container">
-    <div class="col-md-7 col-md-offset-2">
+    <div class='col-md-offset-2 col-lg-4 col-sm-6 col-md-4 col-xs-6'>
       <div class="navbar-header">
-        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
         <a href="/" class="navbar-brand">eval everything</a>
       </div>
-      <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">Latest</a></li>
-          <li><a href="/archives">Archives</a></li>
-        </ul>
-      </nav>
     </div>
+
+    <nav role="navigation" class='col-lg-3 col-sm-6 col-md-4 col-xs-5'>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Latest</a></li>
+        <li><a href="/archives">Archives</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -56,7 +51,7 @@
   <article>
   <header>
     <div class='container'>
-      <div class='col-md-7 col-md-offset-2'>
+      <div class='col-md-10 col-md-offset-2'>
         <h1 class="title">
           <a href="/2013/09/08/native-javascript-notifications/">Native Notifications with JavaScript</a>
         </h1>
@@ -196,15 +191,28 @@
 
 <p><img src="/images/posts/native-javascript-notifications/firefox-notification-small.png" alt="Firefox Notification" /></p>
 
+<div class='pull-left '><p><img src="/images/icons/ie.png" alt="Chrome" class="icon" /></p>
+</div>
+
+
 <h3>Windows</h3>
 
-<p>While there are no system level notifications in Windows (I don&rsquo;t think?), it does allow you to add an icon overlay on the Internet Explorer icon. This allows for some feedback in this browser.</p>
+<p>While there are no system level notifications in Windows (I don&rsquo;t think?), but Internet Explorer 9 and up allow you to add an icon overlay on the browsers icon. This allows for some feedback in this browser. You can see an example of this in the Readme for the <a href="https://github.com/ttsvetko/HTML5-Desktop-Notifications/">HTML5 Desktop Notifications</a> project on GitHub.</p>
 
 <p>Chrome and Firefox on Windows support notifications that behave similar to their Mac counterparts.</p>
 
 <h2>Demo</h2>
 
 <p>Want to see how notifications look in your browser? Try out the <a href="http://ttsvetko.github.io/HTML5-Desktop-Notifications/">HTML5 Notifications Demo</a> to find out.</p>
+
+<div class='credits'><h2>Credits</h2><ol>
+  <li>Icons for Safari, Chrome and Firefox by <a href="http://dribbble.com/shots/1032875-Flat-Icons">Stefano Tirloni</a>.</li>
+  <li>Internet Explorer Icon by <a href="http://onelittledesigner.com/rapidweaver/web-icons/free-flat-browser-icons/">1 Little Designer</a>.</li>
+</ol>
+</div>
+
+
+
 
         
       </div>
@@ -239,12 +247,12 @@
 </div>
 <footer>
   <div class='container'>
-    <div class='col-md-3 col-md-offset-2'>
+    <div class='col-md-3 col-md-offset-2 col-xs-12'>
       <h2>About</h2>
-      <p>eval everything is place for me to write about things he comes across while working on Code School with a heavy focus on JavaScript, Backbone.js, Ember.js, jQuery, Ruby on Rails and D3.</p>
+      <p>eval everything is a blog written by Adam Fortuna with a focus on Ruby, JavaScript and web development. You'll find posts about whatever comes along when working on Code School.</p>
     </div>
 
-    <div class='col-md-2'>
+    <div class='col-md-2 col-xs-6 col-sm-4'>
       <h2>Posts By Tag</h2>
       <ul>
         <li><a href="/tags/javascript">JavaScript</a></li>
@@ -252,16 +260,16 @@
       </ul>
     </div>
 
-    <div class='col-md-2'>
+    <div class='col-md-2 col-xs-6 col-sm-4'>
       <h2>Pages</h2>
       <ul>
         <li><a href="/">Latest</a></li>
-        <li><a href="/archive">Archive</a></li>
+        <li><a href="/archives">Archive</a></li>
         <li><a href="/about">About</a></li>
       </ul>
     </div>
 
-    <div class='col-md-3'>
+    <div class='col-md-3 col-xs-12 col-sm-4'>
       <h2>Contact</h2>
       <p>Follow me on <a href='http://twitter.com/adamfortuna' target='_blank'>Twitter</a></p>
       <p>©2013 <a href='http://adamfortuna.com' target='_blank'>Adam Fortuna</a>.</p>

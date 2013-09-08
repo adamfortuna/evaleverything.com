@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: OS X | eval everything]]></title>
   <link href="http://evaleverything.com/tags/os-x/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-09-08T11:41:17-04:00</updated>
+  <updated>2013-09-08T15:00:05-04:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -121,15 +121,24 @@
 
 <p><img src="/images/posts/native-javascript-notifications/firefox-notification-small.png" alt="Firefox Notification" /></p>
 
+<p><div class='pull-left '><p><img src="/images/icons/ie.png" alt="Chrome" class="icon" /></p>
+</div></p>
+
 <h3>Windows</h3>
 
-<p>While there are no system level notifications in Windows (I don&rsquo;t think?), it does allow you to add an icon overlay on the Internet Explorer icon. This allows for some feedback in this browser.</p>
+<p>While there are no system level notifications in Windows (I don&rsquo;t think?), but Internet Explorer 9 and up allow you to add an icon overlay on the browsers icon. This allows for some feedback in this browser. You can see an example of this in the Readme for the <a href="https://github.com/ttsvetko/HTML5-Desktop-Notifications/">HTML5 Desktop Notifications</a> project on GitHub.</p>
 
 <p>Chrome and Firefox on Windows support notifications that behave similar to their Mac counterparts.</p>
 
 <h2>Demo</h2>
 
 <p>Want to see how notifications look in your browser? Try out the <a href="http://ttsvetko.github.io/HTML5-Desktop-Notifications/">HTML5 Notifications Demo</a> to find out.</p>
+
+<p><div class='credits'><h2>Credits</h2><ol>
+  <li>Icons for Safari, Chrome and Firefox by <a href="http://dribbble.com/shots/1032875-Flat-Icons">Stefano Tirloni</a>.</li>
+  <li>Internet Explorer Icon by <a href="http://onelittledesigner.com/rapidweaver/web-icons/free-flat-browser-icons/">1 Little Designer</a>.</li>
+</ol>
+</div></p>
 ]]></content>
   </entry>
   
