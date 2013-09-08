@@ -4,8 +4,7 @@ title: "Native Notifications with JavaScript"
 date: 2013-09-14 23:42
 comments: true
 author: Adam Fortuna
-tags: [JavaScript]
-draft: true
+tags: [JavaScript, OS X]
 ---
 
 In browser notifications have made a lot of progress in the last few years. Hell, Native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using [Growl][]. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using Native Notifications.
@@ -42,7 +41,7 @@ In order to send notifications in all browsers, you'll need to request permissio
 
 If permission is denied you won't be able to request permission again in the current session. If you try to send a notification without having been granted permission, nothing will happen.
 
-## Send Message
+## Send A Message
 
 Once you have permission, you'll be able send down a notification with the following attributes:
 
