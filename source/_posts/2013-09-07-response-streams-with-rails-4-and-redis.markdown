@@ -18,7 +18,7 @@ If you're looking for an intro, read Aarons post.
 
 Aaron Patterson wrote a great post about [Live Streaming in Rails][], over a year ago, but the interface is mostly the same today. That post is still a good starting point for `ActionController::Live`.
 
-I first ran into the subject when working on Code School's [Rails 4: Zombie Outlaws][] course where the last level is all about streaming, with a mention towards the end about using it in ccooperation with Redis. The example we show in that 
+I first ran into the subject when working on Code School's [Rails 4: Zombie Outlaws][] course where the last level is all about streaming, with a mention towards the end about using it in cooperation with Redis. The example we show in that 
 
 {% pullside left code %}
 If you connected to this endpoint in a browser, it'd load forever and occasionally send back responses to the browser 

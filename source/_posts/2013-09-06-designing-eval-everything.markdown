@@ -12,7 +12,7 @@ I'm not a designer. My last attempt at design was my [personal blog][] ([screens
 
 ## Octopress
 
-First step was going with [Octopress][] and by extention [Jekyll][]. My last blog was on Jekyll, and I was always a little jelous of how easily it looked to get started with Octopress. The default theme also has Sass and Compass integration right away, which helps in getting started.
+First step was going with [Octopress][] and by extension [Jekyll][]. My last blog was on Jekyll, and I was always a little jealous of how easily it looked to get started with Octopress. The default theme also has Sass and Compass integration right away, which helps in getting started.
 
 Rather than starting from the default theme and making tweaks, I everything away and started writing the HTML and Sass from scratch, which is something Octopress makes incredibly easy.
 
@@ -63,7 +63,7 @@ If you need additional power, you can also drop in any other gem. If you need to
 
 ## Twitter Bootstrap
 
-It's hard to mention Twitter Bootstrap to designers and not get an instant groan of pain. I imagine to some of them it's similar to starting up a Rails application using scaffolding, but putting it into production. That being said, it did help me get this site off the ground with some inteligent defaults in place.
+It's hard to mention Twitter Bootstrap to designers and not get an instant groan of pain. I imagine to some of them it's similar to starting up a Rails application using scaffolding, but putting it into production. That being said, it did help me get this site off the ground with some intelligent defaults in place.
 
 For the most part, Bootstrap is used only for the layout at this point. Ideally I'll strip it out some time in the future, but until then it's been an amazing tool to help me get started.
 

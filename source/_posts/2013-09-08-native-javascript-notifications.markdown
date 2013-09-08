@@ -30,7 +30,7 @@ In other words, it's time to hop on board the notification train if you want ano
 Read the source from this project to understand how browsers implement notifications
 {% endpullside %}
 
-The major browsers (setting aside IE) have a few patterns in comon right now that we can use to style our behavior pattern around. If you want see how to use notifications in different browsers, check out the [HTML5 Desktop Notifications][] project on GitHub. It's worth reading over the source code.
+The major browsers (setting aside IE) have a few patterns in common right now that we can use to style our behavior pattern around. If you want see how to use notifications in different browsers, check out the [HTML5 Desktop Notifications][] project on GitHub. It's worth reading over the source code.
 
 ## Request Permission
 
@@ -69,7 +69,7 @@ For Safari notifications, you won't be able to provide an icon unfortunately. In
 
 ![Safari Notification](/images/posts/native-javascript-notifications/safari-notification-small.png)
 
-One of the nice parts of this notification is that it will sync up with your other notifications. For instance, if you have one notification from XCode and another from a website, they'll show up stacked rather than on top of each other.
+One of the nice parts of this notification is that it will sync up with your other notifications. For instance, if you have one notification from Xcode and another from a website, they'll show up stacked rather than on top of each other.
 
 ### Mavericks
 
@@ -106,7 +106,7 @@ Unlike Safari notifications, this will stay up until it is dismissed.
 
 ### Firefox
 
-The Firefox notification would be pretiest out of the box, but the entire body is shown as a link! For all notifications, clicking on it takes you to the page, but Firefox attempts to make it more apparent. The appearance ends up suffering due to this choice.
+The Firefox notification would be prettiest out of the box, but the entire body is shown as a link! For all notifications, clicking on it takes you to the page, but Firefox attempts to make it more apparent. The appearance ends up suffering due to this choice.
 
 {% pullside right %}
 Why is the body a link Firefox? WHY?
