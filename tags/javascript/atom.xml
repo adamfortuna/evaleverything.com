@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: JavaScript | eval everything]]></title>
   <link href="http://evaleverything.com/tags/javascript/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-09-08T02:44:13-04:00</updated>
+  <updated>2013-09-08T11:41:17-04:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Native Notifications with JavaScript]]></title>
-    <link href="http://evaleverything.com/2013/09/14/native-javascript-notifications/"/>
-    <updated>2013-09-14T23:42:00-04:00</updated>
-    <id>http://evaleverything.com/2013/09/14/native-javascript-notifications</id>
-    <content type="html"><![CDATA[<p>In browser notifications have made a lot of progress in the last few years. Hell, Native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using <a href="http://growl.info/">Growl</a>. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using Native Notifications.</p>
+    <link href="http://evaleverything.com/2013/09/08/native-javascript-notifications/"/>
+    <updated>2013-09-08T23:42:00-04:00</updated>
+    <id>http://evaleverything.com/2013/09/08/native-javascript-notifications</id>
+    <content type="html"><![CDATA[<p>In browser notifications have made a lot of progress in the last few years. Hell, native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using <a href="http://growl.info/">Growl</a>. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using native notifications.</p>
 
 <p><div class='pull-right '><p>Warning: Link to the official spec.</p>
 </div></p>

@@ -4,7 +4,7 @@
   <title><![CDATA[Tag: Rails | eval everything]]></title>
   <link href="http://evaleverything.com/tags/rails/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-09-08T02:44:13-04:00</updated>
+  <updated>2013-09-08T11:41:17-04:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Response Streams with Rails 4 and Redis]]></title>
-    <link href="http://evaleverything.com/2013/09/12/response-streams-with-rails-4-and-redis/"/>
-    <updated>2013-09-12T18:25:00-04:00</updated>
-    <id>http://evaleverything.com/2013/09/12/response-streams-with-rails-4-and-redis</id>
+    <link href="http://evaleverything.com/2013/09/07/response-streams-with-rails-4-and-redis/"/>
+    <updated>2013-09-07T18:25:00-04:00</updated>
+    <id>http://evaleverything.com/2013/09/07/response-streams-with-rails-4-and-redis</id>
     <content type="html"><![CDATA[<p>If you&rsquo;re on the fence about updating an older application to use Rails 4, the addition of <code>ActionController::Live</code> might be helpful in making your decision a little easier. It enables keeping a connection open to your server, which can then respond with partial updates with ease. This bridges one of the bigger gaps that causes people to choose <a href="http://nodejs.org/">node.js</a> over Rails for projects.</p>
 
 <h2>A Basic Redis Connection</h2>

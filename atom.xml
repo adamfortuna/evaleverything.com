@@ -4,7 +4,7 @@
   <title><![CDATA[eval everything]]></title>
   <link href="http://evaleverything.com/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-09-08T02:44:13-04:00</updated>
+  <updated>2013-09-08T11:41:17-04:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Native Notifications with JavaScript]]></title>
-    <link href="http://evaleverything.com/2013/09/14/native-javascript-notifications/"/>
-    <updated>2013-09-14T23:42:00-04:00</updated>
-    <id>http://evaleverything.com/2013/09/14/native-javascript-notifications</id>
-    <content type="html"><![CDATA[<p>In browser notifications have made a lot of progress in the last few years. Hell, Native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using <a href="http://growl.info/">Growl</a>. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using Native Notifications.</p>
+    <link href="http://evaleverything.com/2013/09/08/native-javascript-notifications/"/>
+    <updated>2013-09-08T23:42:00-04:00</updated>
+    <id>http://evaleverything.com/2013/09/08/native-javascript-notifications</id>
+    <content type="html"><![CDATA[<p>In browser notifications have made a lot of progress in the last few years. Hell, native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using <a href="http://growl.info/">Growl</a>. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using native notifications.</p>
 
 <div class='pull-right '><p>Warning: Link to the official spec.</p>
 </div>
@@ -146,9 +146,9 @@
   
   <entry>
     <title type="html"><![CDATA[Response Streams with Rails 4 and Redis]]></title>
-    <link href="http://evaleverything.com/2013/09/12/response-streams-with-rails-4-and-redis/"/>
-    <updated>2013-09-12T18:25:00-04:00</updated>
-    <id>http://evaleverything.com/2013/09/12/response-streams-with-rails-4-and-redis</id>
+    <link href="http://evaleverything.com/2013/09/07/response-streams-with-rails-4-and-redis/"/>
+    <updated>2013-09-07T18:25:00-04:00</updated>
+    <id>http://evaleverything.com/2013/09/07/response-streams-with-rails-4-and-redis</id>
     <content type="html"><![CDATA[<p>If you&rsquo;re on the fence about updating an older application to use Rails 4, the addition of <code>ActionController::Live</code> might be helpful in making your decision a little easier. It enables keeping a connection open to your server, which can then respond with partial updates with ease. This bridges one of the bigger gaps that causes people to choose <a href="http://nodejs.org/">node.js</a> over Rails for projects.</p>
 
 <h2>A Basic Redis Connection</h2>
@@ -308,9 +308,9 @@
   
   <entry>
     <title type="html"><![CDATA[Designing eval everything]]></title>
-    <link href="http://evaleverything.com/2013/09/10/designing-eval-everything/"/>
-    <updated>2013-09-10T01:11:00-04:00</updated>
-    <id>http://evaleverything.com/2013/09/10/designing-eval-everything</id>
+    <link href="http://evaleverything.com/2013/09/06/designing-eval-everything/"/>
+    <updated>2013-09-06T01:11:00-04:00</updated>
+    <id>http://evaleverything.com/2013/09/06/designing-eval-everything</id>
     <content type="html"><![CDATA[<p>I&rsquo;m not a designer. My last attempt at design was my <a href="http://blog.adamfortuna.com/">personal blog</a> (<a href="http://evaleverything.com/images/posts/designing-eval-everything/blog-adamfortuna-com.png">screenshot for posterity</a>), which is far from a masterpiece. When starting this blog, I decided it was time to put some of what I&rsquo;ve learned from the design talent at <a href="http://codeschool.com">Code School</a> to use and see if my eye had improved.</p>
 
 <h2>Octopress</h2>
