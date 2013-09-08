@@ -16,7 +16,7 @@ description: eval everything is a blog written by Adam Fortuna with a focus on R
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
+subscribe_rss: http://feeds.feedburner.com/evaleverything
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:
