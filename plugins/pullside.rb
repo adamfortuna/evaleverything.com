@@ -1,14 +1,15 @@
+require 'kramdown'
+
 module Jekyll
   class PullsideTag < Liquid::Block
-    def initialize(tag_name, markup, tokens)
-      @align = (markup =~ /left/i) ? "left" : "right"
-      @code = (markup =~ /code/i) ? "code" : ""
+    def initialize(tag_name, params, tokens)
+      @params = params
       super
     end
 
     def render(context)
-      output = super
-      "<div class='pull-#{@align} #{@code}'>#{output}</div>"
+      output = Kramdown::Document.new(super.strip.chomp).to_html
+      "<div class='pull-#{@params}'>#{output}</div>"
     end
   end
 end

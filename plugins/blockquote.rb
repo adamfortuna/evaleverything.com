@@ -46,7 +46,7 @@ module Jekyll
 
     def render(context)
       quote = paragraphize(super)
-      author = "<strong>#{@by.strip}</strong>" if @by
+      author = "<small>#{@by.strip}</small>" if @by
       if @source
         url = @source.match(/https?:\/\/(.+)/)[1].split('/')
         parts = []

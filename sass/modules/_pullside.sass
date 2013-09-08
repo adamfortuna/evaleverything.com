@@ -4,12 +4,19 @@
   min-height: 1px
   padding-right: 15px
   padding-left: 15px
-  font-size: 14px
   color: lighten(#333, 10%)
   font-family: $c-header-fontFamily
 
+  p 
+    font-size: 14px
+    &:last-child
+      margin-bottom: 0
+
   &.code
     margin-top: 2em
+
+  .icon
+    height: 64px
 
 .pull-right
   right: -42%

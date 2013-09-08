@@ -11,7 +11,7 @@ If you're on the fence about updating an older application to use Rails 4, the a
 
 ## A Basic Redis Connection
 
-{% pullside 'right' %}
+{% pullside right %}
 If you're looking for an intro, read Aarons post.
 {% endpullside %}
 
@@ -19,7 +19,7 @@ Aaron Patterson wrote a great post about [Live Streaming in Rails][], over a yea
 
 I first ran into the subject when working on Code School's [Rails 4: Zombie Outlaws][] course where the last level is all about streaming, with a mention towards the end about using it in ccooperation with Redis. The example we show in that 
 
-{% pullside 'left code' %}
+{% pullside left code %}
 If you connected to this endpoint in a browser, it'd load forever and occasionally send back responses to the browser 
 {% endpullside %}
 
@@ -59,8 +59,8 @@ Here's a quick recap of what's going on:
 
 If you wrote the above code and opened up that action in a browser, it would actually work fine -- until you tried to load the page again. At that point there would be two connections open from the servers standpoint, but only one active. This is due to the fact that the server doesn't know that the client disconnected.
 
-{% pullside 'right code' %}
-Good discussion on at github/rails on this issue
+{% pullside right code %}
+Good discussion at github/rails on this issue
 {% endpullside %}
 
 That `IOError` error isn't triggered when the client disconnects as you might expect, but instead when the server attempts to write to the `response.stream` only to find that it is no longer active. Turns out this is a [well discussed problem][] That leaves us with a few options on how to test if the client has disconnected:
@@ -72,6 +72,11 @@ That `IOError` error isn't triggered when the client disconnects as you might ex
 ## A Working Solution
 
 I ran into a [StackOverflow][] post on this exact topic, which lead to _a_ working solution for this.
+
+
+{% pullside left code %}
+This solution follows the "ping" method.
+{% endpullside %}
 
 ```ruby
 class ActivitiesController < ApplicationController

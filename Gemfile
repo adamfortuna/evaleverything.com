@@ -19,6 +19,8 @@ group :development do
   gem 'liquid', '~> 2.3.0'
   gem 'directory_watcher', '1.4.1'
 
+  gem 'kramdown'
+  gem 'pry'
   gem 'nokogiri'
   gem 'active_support'
 end
