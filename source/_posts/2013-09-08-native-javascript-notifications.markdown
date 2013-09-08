@@ -1,13 +1,14 @@
 ---
 layout: post
 title: "Native Notifications with JavaScript"
-date: 2013-09-14 23:42
+description: Using HTML 5 native notifications with JavaScript in Chome, Safari, Firefox and on Windows.
+date: 2013-09-08 23:42
 comments: true
 author: Adam Fortuna
 tags: [JavaScript, OS X]
 ---
 
-In browser notifications have made a lot of progress in the last few years. Hell, Native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using [Growl][]. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using Native Notifications.
+In browser notifications have made a lot of progress in the last few years. Hell, native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using [Growl][]. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using native notifications.
 
 {% pullside right %}
 Warning: Link to the official spec.

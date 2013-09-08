@@ -1,0 +1,5 @@
+<p class='meta'>
+  Written {{ post.date|date: "%B %d, %Y" }}
+  | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread">Comments</a>
+  | {{ post.tags | tag_links }}
+</p>

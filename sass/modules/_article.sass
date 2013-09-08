@@ -3,8 +3,6 @@ article
     margin-bottom: 1em
     h1 
       width: 130%
-      a:hover 
-        text-decoration: underline
     .meta  
       color: darken($c-article-subheaderColor, 50%)
       font-size: 14px
@@ -26,8 +24,15 @@ body.home
   article 
     padding-top: 2em
     h1 
-      a, a:hover 
+      font-size: 34px
+      a
         color: #555
+      a:hover
+        text-decoration: underline
+        color: darken($c-article-subheaderColor, 50%)
+
+    .meta
+      color: #777
     &:last-of-type 
       .content section 
         border: none

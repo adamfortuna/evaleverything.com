@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Designing eval everything"
-date: 2013-09-10 01:11
+description: "Using Octopress, Sass, MVCSS with the help of Code School courses to design eval everything."
+date: 2013-09-06 01:11
 comments: true
 author: Adam Fortuna
 tags: [Design]

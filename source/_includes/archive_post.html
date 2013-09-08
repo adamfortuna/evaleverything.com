@@ -1,9 +1,2 @@
-{% capture tags %}{{ post.tags | size }}{% endcapture %}
 <h1><a href="{{ root_url }}{{ post.url }}">{{post.title}}</a></h1>
-<time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate>{{ post.date|date: "%B %d, %Y" }}</time>
-
-{% if tags != '0' %}
-<footer>
-  <span class="tags">Tags: {{ post.tags | tag_links }}</span>
-</footer>
-{% endif %}
+{% include post/meta.html %}

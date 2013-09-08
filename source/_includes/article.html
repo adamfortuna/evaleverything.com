@@ -5,11 +5,7 @@
         <h1 class="title">
           <a href="{{ post.url }}">{{ post.title }}</a>
         </h1>
-        <p class='meta'>
-          Written {{ post.date|date: "%B %d, %Y" }}
-          | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#comments">Comments</a>
-          | {{ post.tags | tag_links }}
-        </p>
+        {% include post/meta.html %}
       </div>
     </div>
   </header>
@@ -36,7 +32,7 @@
       <div class='container'>
         <section class='col-md-7 col-md-offset-2'>
           <h2>Comments</h2>
-          <div id="disqus_thread"></div>
+          <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
         </section>
       </div>
     </div>

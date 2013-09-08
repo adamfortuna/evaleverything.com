@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Response Streams with Rails 4 and Redis"
-date: 2013-09-12 18:25
+description: "Long running connections to the server using Rails 4, Redis and a publish/subscribe model."
+date: 2013-09-07 18:25
 comments: true
 author: Adam Fortuna
 tags: [Ruby, Rails, Redis]

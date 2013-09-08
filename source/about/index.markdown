@@ -19,5 +19,5 @@ If you're curious what went into the design and setup of the site, you should ch
 [personal blog]: http://blog.adamfortuna.com
 [Envy Labs]: http://envylabs.com
 [Code School]: http://codeschool.com
-[Designing eval everything]: /2013/09/10/designing-eval-everything/
+[Designing eval everything]: /2013/09/06/designing-eval-everything/
 [grab the source]: https://github.com/adamfortuna/evaleverything.com
