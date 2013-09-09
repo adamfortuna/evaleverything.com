@@ -55,18 +55,17 @@
         <h1 class="title">
           <a href="/2013/09/07/response-streams-with-rails-4-and-redis/">Response Streams with Rails 4 and Redis</a>
         </h1>
-        <p class='meta'>
-  Written September 07, 2013
-  | <a href="#disqus_thread">Comments</a>
-  | <a class='tag' href='/tags/rails/'>Rails</a>, <a class='tag' href='/tags/redis/'>Redis</a>, <a class='tag' href='/tags/ruby/'>Ruby</a>
-</p>
+        <ul class='meta group'>
+  <li>Written September 07, 2013</li>
+  <li><a href="#disqus_thread">Comments</a></li>
+  <li><a class='tag' href='/tags/rails/'>Rails</a>, <a class='tag' href='/tags/redis/'>Redis</a>, <a class='tag' href='/tags/ruby/'>Ruby</a></li>
+</ul>
       </div>
     </div>
   </header>
 
   <div class='container content'>
-    <section class='col-md-7 col-md-offset-2'>
-    
+    <section class='col-md-7 col-md-offset-2'>    
       
         <div class='pull-right author'>
   <img src='/images/adam-fortuna.png' alt='Adam Fortuna' class='img-rounded'/>
@@ -74,7 +73,6 @@
   </p>
 </div>
       
-
       <div class='post-content'>
         
           <p>If you&rsquo;re on the fence about updating an older application to use Rails 4, the addition of <code>ActionController::Live</code> might be helpful in making your decision a little easier. It enables keeping a connection open to your server, which can then respond with partial updates with ease. This bridges one of the bigger gaps that causes people to choose <a href="http://nodejs.org/">node.js</a> over Rails for projects.</p>
@@ -232,9 +230,45 @@
 
 <p>If you know of a better way of doing this, I&rsquo;d love to hear it. Short of using Sinatra, Goliath or another middleware this is the only way I&rsquo;ve found to handle this.</p>
 
+
+          
+            <div class='share'>
+  <ul>
+    <li class='share--hn'>
+        <a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a>
+
+      <script>
+          (function(d, t) {
+              var g = d.createElement(t),
+                  s = d.getElementsByTagName(t)[0];
+              g.src = '//hnbutton.appspot.com/static/hn.min.js';
+              s.parentNode.insertBefore(g, s);
+          }(document, 'script'));
+      </script>
+    </li>
+    <li class='share--twitter'>
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </li>
+
+    <li class='share--facebook'>
+      <div class="fb-like" data-href="http://developers.facebook.com/docs/reference/plugins/like" data-width="200" data-layout="button_count" data-show-faces="true" data-send="true"></div>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=327873787309521";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+    </li
+  </ul>
+</div>
+          
+
         
       </div>
-    </section>    
+    </section>
   </div>
 
   
