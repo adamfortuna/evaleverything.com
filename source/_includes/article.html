@@ -11,20 +11,23 @@
   </header>
 
   <div class='container content'>
-    <section class='col-md-7 col-md-offset-2'>
-    
+    <section class='col-md-7 col-md-offset-2'>    
       {% if single_page or postNumber == 0 %}
         {% include post/author.html %}
       {% endif %}
-
       <div class='post-content'>
         {% if single_page %}
           {{ content }}
+
+          {% if single_page and post.sharing %}
+            {% include post/share.html %}
+          {% endif %}
+
         {% else %}
           {{ post.content }}
         {% endif %}
       </div>
-    </section>    
+    </section>
   </div>
 
   {% if single_page and post.comments %}

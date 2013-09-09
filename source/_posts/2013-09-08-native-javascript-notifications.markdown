@@ -4,6 +4,7 @@ title: "Native Notifications with JavaScript"
 description: Using HTML 5 native notifications with JavaScript in Chome, Safari, Firefox and on Windows.
 date: 2013-09-08 23:42
 comments: true
+sharing: true
 author: Adam Fortuna
 tags: [JavaScript, OS X]
 ---

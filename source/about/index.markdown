@@ -15,9 +15,9 @@ eval everything is a blog by [Adam Fortuna][] serving as an outlet for writing a
 
 If you're curious what went into the design and setup of the site, you should checkout the post on [Designing eval everything][], or just [grab the source][].
 
-At Code School, I work mostly on the course side of things. Most of us wear a lot of hats -- sometimes writing courses, sometimes implementing them. My main focus this year has included things like co-writing the content for [Try jQuery][] and [jQuery 2: The Return Flight][] and implementing the course. Lately I've been working a lot on the front end of courses, including creating the front-end framework, built on Backbone.js, that we use for courses. Check out the first level of [Rails 4: Zombie Outlaws][] for an example.
+At Code School, I work mostly on the course side of things. Most of us wear a lot of hats -- sometimes writing courses, sometimes implementing them. My main focus this year has included things like co-writing the content for [Try jQuery][] and [jQuery 2: The Return Flight][]. Lately I've been working a lot on the front end of courses, mostly with Backbone.js. We recently revamped it to make it easier to bring new ideas to light. Check out the first level of [Rails 4: Zombie Outlaws][] for an example.
 
-Looking forward, my biggest technological of interest are Ember.js, D3, and iOS development. My spirit animal would be [Bret Victor][].
+Looking forward, my biggest technological areas of interest are Ember.js, D3, and iOS development. My spirit animal would be [Bret Victor][].
 
 [Adam Fortuna]: http://adamfortuna.com
 [personal blog]: http://blog.adamfortuna.com

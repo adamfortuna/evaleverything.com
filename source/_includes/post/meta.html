@@ -1,5 +1,5 @@
-<p class='meta'>
-  Written {{ post.date|date: "%B %d, %Y" }}
-  | <a href="{% if index or this_year %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread">Comments</a>
-  | {{ post.tags | tag_links }}
-</p>
+<ul class='meta group'>
+  <li>Written {{ post.date|date: "%B %d, %Y" }}</li>
+  <li><a href="{% if index or this_year %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread">Comments</a></li>
+  <li>{{ post.tags | tag_links }}</li>
+</ul>
