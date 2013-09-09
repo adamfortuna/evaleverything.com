@@ -13,9 +13,6 @@ header.topbar
       background-repeat: no-repeat
       background-size: 64px
       background-position: 10px 15px
-
-      padding-left: 80px
-
       b
         font-weight: 700
       &:hover
@@ -26,14 +23,11 @@ header.topbar
       background-color: darken($c-header-backgroundColor, 15%)
       color: lighten(#346750, 60%)
 
-  .navbar-header
-    min-width: 230px
   nav
-    min-width: 185px
     .navbar-nav
       margin: 0px -15px
       >li
-        float: left
+        float: right
 
 +respond-to(640px, max-width)
   header.topbar .nav>li>a
