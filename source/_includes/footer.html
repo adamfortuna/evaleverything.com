@@ -7,26 +7,15 @@
 
     <div class='col-md-2 col-xs-6 col-sm-4'>
       <h2>Posts By Tag</h2>
-      <ul>
-        <li><a href="/tags/javascript">JavaScript</a></li>
-        <li><a href="/tags/ruby">Ruby</a></li>
-      </ul>
+      {% include custom/footer_tags.html %}
     </div>
 
     <div class='col-md-2 col-xs-6 col-sm-4'>
-      <h2>Pages</h2>
-      <ul>
-        <li><a href="/">Latest</a></li>
-        <li><a href="/archives">Archive</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
+      {% include custom/footer_pages.html %}
     </div>
 
     <div class='col-md-3 col-xs-12 col-sm-4'>
-      <h2>Contact</h2>
-      <p>Follow me on <a href='http://twitter.com/adamfortuna' target='_blank'>Twitter</a></p>
-      <p>©2013 <a href='http://adamfortuna.com' target='_blank'>{{site.author}}</a>.</p>
-      <p>Powered by <a href='http://octopress.org'>Octopress</a></p>
+      {% include custom/contact.html %}
     </div>
   </div>
 </footer>
