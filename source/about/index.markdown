@@ -61,4 +61,4 @@ See more projects on [GitHub][], or follow me [Twitter][].
 [Twitter]:http://twitter.com/adamfortuna
 [Try jQuery]: http://try.jquery.com
 [try.jquery.com]: http://try.jquery.com
-[JavaScript Roadtrip]: 
+[JavaScript Roadtrip]: http://javascript-roadtrip.codeschool.com/
