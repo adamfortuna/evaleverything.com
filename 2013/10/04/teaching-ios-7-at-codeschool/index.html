@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Teaching iOS 7 at Code School - eval everything</title>
+  <meta name="author" content="Adam Fortuna">
+  
+  <meta name="description" content="Teaching iOS 7 at Code School Written October 04, 2013 Comments Code School, OS X, iOS Adam Fortuna works at Envy Labs on Code School with a focus &hellip;">
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://evaleverything.com/2013/10/04/teaching-ios-7-at-codeschool">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/evaleverything" rel="alternate" title="eval everything" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body class="post">
+
+<div id='wrap'>
+<header class='topbar' role="banner">
+  <div class="container">
+    <div class='col-md-offset-2 col-sm-4 col-xs-7'>
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">eval everything</a>
+      </div>
+    </div>
+
+    <nav role="navigation" class='col-lg-3 col-md-3 col-sm-8 col-xs-5'>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/archives">Archives</a></li>
+        <li><a href="/">Latest</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+<main id='content' role='main'>
+  
+  
+  <article>
+  <header>
+    <div class='container'>
+      <div class='col-md-10 col-md-offset-2'>
+        <h1 class="title">
+          <a href="/2013/10/04/teaching-ios-7-at-codeschool/">Teaching iOS 7 at Code School</a>
+        </h1>
+        <ul class='meta group'>
+  <li>Written October 04, 2013</li>
+  
+    <li><a href="#disqus_thread">Comments</a></li>
+  
+
+  
+  
+    <li><a class='tag' href='/tags/code-school/'>Code School</a>, <a class='tag' href='/tags/os-x/'>OS X</a>, <a class='tag' href='/tags/ios/'>iOS</a></li>
+  
+</ul>
+      </div>
+    </div>
+  </header>
+
+  <div class='container content'>
+    <section class='col-md-7 col-md-offset-2'>    
+      
+        <div class='pull-right author'>
+  <img src='/images/adam-fortuna.png' alt='Adam Fortuna' class='img-rounded'/>
+<p><a href='http://adamfortuna.com'>Adam Fortuna</a> works at <a href='http://envylabs.com'>Envy Labs</a> on <a href='http://codeshool.com'>Code School</a> with a focus on JavaScript, Ruby, Rails &amp; improving education.</span></p>
+</div>
+      
+      <div class='post-content'>
+        
+          <p>A long time ago, at a <a href="http://adamfortuna.com/wwdc/">WWDC</a> far away, 3 travelers from <a href="http://codeschool.com">Code School</a> journeyed to Apple Mecca in search of new technologies. The goal was to see what was new in iOS 7, while looking for ways to best teach this new addition to the iOS world.</p>
+
+<p>This week we released the result of that experience.</p>
+
+<h2>Think Outside the Browser</h2>
+
+<p>Up to this point, every Code School course has used an in browser editor. This simple interaction makes sense for learning a new topic from scratch. You don&rsquo;t need to install anything on your local system, and you can see what it&rsquo;s like to develop in a sandbox. After you&rsquo;ve learned the ropes, you want a taste of programming in the real world. <a href="https://twitter.com/eallam">Eric Allam</a> thought there could be a better way to pull this off.</p>
+
+<div class='pull-left '><p><img src="/images/codeschool/core-ios-7.png" alt="Core iOS 7" class="icon" /></p>
+</div>
+
+
+<p><a href="http://ios7.codeschool.com">Core iOS 7</a> goes a different path. After watching a video on a topic, you&rsquo;ll be prompted to download a zip file. Unzip this file and you&rsquo;ll have an entire Xcode project, with a unique identifier in it that Code School uses to identify you. In this project you complete a series of tasks, then run the tests in Xcode. The results of which are sent to the course, and you see the results in your browser.</p>
+
+<p>The easiest way to see how this all fits together is the 10 second video Eric created for the <a href="http://blog.codeschool.com/post/62915764253/introducing-core-ios-7">Code School Blog</a>.</p>
+
+<div class='pull-right '><p>For a more elaborate take on this course, check out the Erics post on the <a href="http://blog.codeschool.com/post/62915764253/introducing-core-ios-7">Code School Blog</a>.</p>
+</div>
+
+
+
+
+<iframe src="//player.vimeo.com/video/75897272" width="100%" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+<p>Did you see that? We use <a href="/2013/09/08/native-javascript-notifications/">native browser notifications</a> and <a href="/2013/09/07/response-streams-with-rails-4-and-redis/">response streams</a> to push the latest results back immediately.</p>
+
+<p>Native editing using the same tool you&rsquo;d use, coupled with an interactive course with videos makes for a more direct connection between you and the code. The course prompts you with tasks to complete in Xcode, you perform them, run the test suite, and the site is updated to reflect what tasks are left to complete. The result of this is that you&rsquo;ll see feedback in the browser immediately following a test run from Xcode.</p>
+
+<h2>Videos in Context</h2>
+
+<div class='pull-right '><p>You probably should just watch everything he’s ever done.</p>
+</div>
+
+
+<p>Recently <a href="http://worrydream.com/">Bret Victor</a> put out an inspiring, interactive version of his last talk, <a href="http://worrydream.com/MediaForThinkingTheUnthinkable/">Media for the Unthinkable</a>. This presentation of the content hit close to home. Ever since <a href="http://railsforzombies.com">Rails for Zombies</a>, Code School&rsquo;s courses have featured videos, followed by in browser challenges. The only way to see the video was to navigate back to it, view the video, and then go back to the challenge. We&rsquo;ve long known we could do better, but this format was the kick we needed at the right time.</p>
+
+<p>In the footer of interactive version of his <strong>Media for the Unthinkable</strong> talk, Bret goes into the thought behind this method of displaying the content:</p>
+
+<blockquote><p>But a talk is a poor knowledge-container. It&#8217;s opaque. The viewer can&#8217;t skim, browse, or get a gist at a glance. Ideas can&#8217;t be looked up as needed; they feel fleeting. The medium works well for entertainment — watch and enjoy — but not for a toolbox.</p><footer><small>Media for the Unthinkable</small> <cite><a href='http://worrydream.com/MediaForThinkingTheUnthinkable/'>worrydream.com/&hellip;</a></cite></footer></blockquote>
+
+
+
+
+<div class='pull-right '><p>Videos are a toolbox.</p>
+</div>
+
+
+<p>Our videos are a toolbox. You pull one out and use to solve the challenges that come after, so why would you want to navigate away to rewatch one? Putting them in context only made sense. Each task you are prompted to complete has an associated position within the video you previously watched which you can call up with a click, at the moment you need it.</p>
+
+<h2>iOS Education</h2>
+
+<p><a href="https://twitter.com/eallam">Eric Allam</a> and <a href="https://twitter.com/jonfriskics">Jon Friskics</a> did an amazing job on the content for this course, while <a href="http://justinmezzell.com/">Justin Mezzell</a> and <a href="https://twitter.com/dandenney">Dan Denney</a> created an vivid design. I worked exclusively on the Rails/JavaScript side which presented some extremely exciting challenges to solve &mdash; and served as the content for the first few posts on this blog. I don&rsquo;t know what the future of iOS education will be, but I&rsquo;d like to think we&rsquo;re pushing the boundries and continuing to improve.</p>
+
+
+          
+            <div class='share'>
+  <ul>
+    <li class='share--hn'>
+        <a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a>
+
+      <script>
+          (function(d, t) {
+              var g = d.createElement(t),
+                  s = d.getElementsByTagName(t)[0];
+              g.src = '//hnbutton.appspot.com/static/hn.min.js';
+              s.parentNode.insertBefore(g, s);
+          }(document, 'script'));
+      </script>
+    </li>
+    <li class='share--twitter'>
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </li>
+
+    <li class='share--facebook'>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=179617355555848";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+      <div class="fb-like" data-width="100" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+    </li>
+  </ul>
+</div>
+          
+
+        
+      </div>
+    </section>
+  </div>
+
+  
+    <div class='comments' id='comments'>
+      <div class='container'>
+        <section class='col-md-7 col-md-offset-2'>
+          <h2>Comments</h2>
+          <div id="disqus_thread" aria-live="polite"><script>
+  var disqus_shortname = "evaleverything",
+      disqus_identifier = 'http://evaleverything.com/2013/10/04/teaching-ios-7-at-codeschool/',
+      disqus_url = 'http://evaleverything.com/2013/10/04/teaching-ios-7-at-codeschool/';
+      disqus_script = 'embed.js';
+
+  (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script></div>
+        </section>
+      </div>
+    </div>
+  
+</article>
+</main>
+</div>
+<footer>
+  <div class='container'>
+    <div class='col-md-3 col-md-offset-2 col-xs-12'>
+      <h2>About</h2>
+      <p>eval everything is a blog written by Adam Fortuna with a focus on Ruby, JavaScript and web development. You'll find posts about whatever comes along when working on Code School.</p>
+    </div>
+
+    <div class='col-md-2 col-xs-6 col-sm-4'>
+      <h2>Posts By Tag</h2>
+      <!-- Put your popular tags here -->
+<ul>
+  <li><a href='/tags/design'>Design</a></li>
+  <li><a href='/tags/javascript'>JavaScript</a></li>
+  <li><a href='/tags/ruby'>Ruby</a></li>
+</ul>
+    </div>
+
+    <div class='col-md-2 col-xs-6 col-sm-4'>
+      <h2>Pages</h2>
+<ul>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/archives">Archive</a></li>
+  <li><a href="/about">About</a></li>
+</ul>
+    </div>
+
+    <div class='col-md-3 col-xs-12 col-sm-4'>
+      <h2>Contact</h2>
+<p>Follow me on <a href='http://twitter.com/adamfortuna'>Twitter</a></p>
+<p>©2013 <a href='http://adamfortuna.com'>Adam Fortuna</a></p>
+<p>Powered by <a href='http://octopress.org'>Octopress</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var disqus_shortname = "evaleverything";
+</script>
+<script src="//go.disqus.com/count.js" async></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-90326-16']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</body>
+</html>

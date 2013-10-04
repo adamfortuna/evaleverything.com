@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Tag: OS X | eval everything]]></title>
-  <link href="http://evaleverything.com/tags/os-x/atom.xml" rel="self"/>
+  <title><![CDATA[Tag: Code School | eval everything]]></title>
+  <link href="http://evaleverything.com/tags/code-school/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
   <updated>2013-10-03T21:50:37-04:00</updated>
   <id>http://evaleverything.com/</id>
@@ -199,6 +199,147 @@
   <li>Internet Explorer Icon by <a href="http://onelittledesigner.com/rapidweaver/web-icons/free-flat-browser-icons/">1 Little Designer</a>.</li>
 </ol>
 </div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Response Streams with Rails 4 and Redis]]></title>
+    <link href="http://evaleverything.com/2013/09/07/response-streams-with-rails-4-and-redis/"/>
+    <updated>2013-09-07T18:25:00-04:00</updated>
+    <id>http://evaleverything.com/2013/09/07/response-streams-with-rails-4-and-redis</id>
+    <content type="html"><![CDATA[<p>If you&rsquo;re on the fence about updating an older application to use Rails 4, the addition of <code>ActionController::Live</code> might be helpful in making your decision a little easier. It enables keeping a connection open to your server, which can then respond with partial updates with ease. This bridges one of the bigger gaps that causes people to choose <a href="http://nodejs.org/">node.js</a> over Rails for projects.</p>
+
+<h2>A Basic Redis Connection</h2>
+
+<p><div class='pull-right '><p>If you’re looking for an intro, read Aarons post.</p>
+</div></p>
+
+<p>Aaron Patterson wrote a great post about <a href="http://tenderlovemaking.com/2012/07/30/is-it-live.html">Live Streaming in Rails</a>, over a year ago, but the interface is mostly the same today. That post is still a good starting point for <code>ActionController::Live</code>.</p>
+
+<p>I first ran into the subject when working on Code School&rsquo;s <a href="http://rails4.codeschool.com/">Rails 4: Zombie Outlaws</a> course where the last level is all about streaming, with a mention towards the end about using it in cooperation with Redis. The example we show in that</p>
+
+<p><div class='pull-left code '><p>If you connected to this endpoint in a browser, it’d load forever and occasionally send back responses to the browser</p>
+</div></p>
+
+<p>```ruby
+class ActivitiesController &lt; ApplicationController
+  include ActionController::Live</p>
+
+<p>  def index</p>
+
+<pre><code>response.headers["Content-Type"] = "text/event-stream"
+redis = Redis.new
+
+redis.psubscribe("user-#{current_user.id}:*") do |on|
+  on.pmessage do |subscription, event, data|
+    response.stream.write "data: #{data}\n\n"
+  end
+end
+</code></pre>
+
+<p>  rescue IOError</p>
+
+<pre><code># Client disconnected
+</code></pre>
+
+<p>  ensure</p>
+
+<pre><code>redis.quit
+response.stream.close
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Here&rsquo;s a quick recap of what&rsquo;s going on:</p>
+
+<ul>
+<li>We&rsquo;re using <a href="https://github.com/puma/puma">Puma</a> which allows for concurrent connections to the server.</li>
+<li>We create a new connection to Redis. This is important because when we call <code>psubscribe</code>, that connection is locked, and can&rsquo;t do anything else.</li>
+<li>Use <code>psubscribe</code> to subscribe to all messages for this user by using an expression. Elsewhere in the application, we are <code>publish</code>ing messages to this same channel.</li>
+<li>When a message is received, it&rsquo;s passed down to the client. In this case we&rsquo;re passing down JSON.</li>
+<li><code>ensure</code> that the <code>redis</code> connection is <code>quit</code> and the response is ended.</li>
+</ul>
+
+
+<h2>The Problem</h2>
+
+<p>If you wrote the above code and opened up that action in a browser, it would actually work fine &mdash; until you tried to load the page again. At that point there would be two connections open from the servers standpoint, but only one active. This is due to the fact that the server doesn&rsquo;t know that the client disconnected.</p>
+
+<p><div class='pull-right code '><p>Good discussion at github/rails on this issue</p>
+</div></p>
+
+<p>That <code>IOError</code> error isn&rsquo;t triggered when the client disconnects as you might expect, but instead when the server attempts to write to the <code>response.stream</code> only to find that it is no longer active. Turns out this is a <a href="https://github.com/rails/rails/issues/10989">well discussed problem</a> That leaves us with a few options on how to test if the client has disconnected:</p>
+
+<ul>
+<li>Have the server connection timeout every minute or so. (If you&rsquo;re on Heroku, my guess is this will automatically happen)</li>
+<li>Ping the client every few seconds to see if they are still there.</li>
+</ul>
+
+
+<h2>A Working Solution</h2>
+
+<p>I ran into a <a href="http://stackoverflow.com/questions/14268690/actioncontrollerlive-is-it-possible-to-check-if-connection-is-still-alive">StackOverflow</a> post on this exact topic, which lead to <em>a</em> working solution for this.</p>
+
+<p><div class='pull-left code '><p>This solution follows the “ping” method.</p>
+</div></p>
+
+<p>```ruby
+class ActivitiesController &lt; ApplicationController
+  include ActionController::Live</p>
+
+<p>  def index</p>
+
+<pre><code>response.headers["Content-Type"] = "text/event-stream"
+redis = Redis.new
+
+ticker = Thread.new { loop { sse.write 0; sleep 5 } }
+sender = Thread.new do  
+  redis.psubscribe("user-#{current_user.id}:*") do |on|
+    on.pmessage do |subscription, event, data|
+      response.stream.write "data: #{data}\n\n"
+    end
+  end
+end
+ticker.join
+sender.join
+</code></pre>
+
+<p>  rescue IOError</p>
+
+<pre><code># Client disconnected
+</code></pre>
+
+<p>  ensure</p>
+
+<pre><code>Thread.kill(ticker) if ticker
+Thread.kill(sender) if sender
+redis.quit
+response.stream.close
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>This solution is based on the idea that the server will know the client has disconnected when it attempts to write to it only to find it&rsquo;s now there. In this case we open up two threads &mdash; one that does our Redis subscription, and another that handles making sure the client is still there.</p>
+
+<p>If you know of a better way of doing this, I&rsquo;d love to hear it. Short of using Sinatra, Goliath or another middleware this is the only way I&rsquo;ve found to handle this.</p>
+
+<h2>Closing the Database</h2>
+
+<p>One downside of keeping the connection open is that if you&rsquo;re using ActiveRecord, that connection will not be released until the request is complete. During the Redis subscribe phase, if you don&rsquo;t need to keep that connection open, you can return the current connection to the <code>connection_pool</code>.</p>
+
+<p><code>ruby
+ActiveRecord::Base.connection_pool.release_connection
+</code></p>
+
+<p>If you set this up to run in a <code>before</code> filter, and do any database communication before that, you shouldn&rsquo;t run into database connection limits.</p>
+
+<h2>Update</h2>
+
+<p>For an example of how this technique is used, read the post on <a href="/2013/10/04/teaching-ios-7-at-codeschool/">Teaching iOS 7 at Code School</a>. This post details the user experience that can be achieved using response streams.</p>
 ]]></content>
   </entry>
   

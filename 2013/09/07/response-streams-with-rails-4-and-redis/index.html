@@ -63,7 +63,7 @@
 
   
   
-    <li><a class='tag' href='/tags/rails/'>Rails</a>, <a class='tag' href='/tags/redis/'>Redis</a>, <a class='tag' href='/tags/ruby/'>Ruby</a></li>
+    <li><a class='tag' href='/tags/code-school/'>Code School</a>, <a class='tag' href='/tags/rails/'>Rails</a>, <a class='tag' href='/tags/redis/'>Redis</a>, <a class='tag' href='/tags/ruby/'>Ruby</a></li>
   
 </ul>
       </div>
@@ -234,6 +234,21 @@
 <p>This solution is based on the idea that the server will know the client has disconnected when it attempts to write to it only to find it&rsquo;s now there. In this case we open up two threads &mdash; one that does our Redis subscription, and another that handles making sure the client is still there.</p>
 
 <p>If you know of a better way of doing this, I&rsquo;d love to hear it. Short of using Sinatra, Goliath or another middleware this is the only way I&rsquo;ve found to handle this.</p>
+
+<h2>Closing the Database</h2>
+
+<p>One downside of keeping the connection open is that if you&rsquo;re using ActiveRecord, that connection will not be released until the request is complete. During the Redis subscribe phase, if you don&rsquo;t need to keep that connection open, you can return the current connection to the <code>connection_pool</code>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">ActiveRecord</span><span class="p">:</span><span class="ss">:Base</span><span class="o">.</span><span class="n">connection_pool</span><span class="o">.</span><span class="n">release_connection</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you set this up to run in a <code>before</code> filter, and do any database communication before that, you shouldn&rsquo;t run into database connection limits.</p>
+
+<h2>Update</h2>
+
+<p>For an example of how this technique is used, read the post on <a href="/2013/10/04/teaching-ios-7-at-codeschool/">Teaching iOS 7 at Code School</a>. This post details the user experience that can be achieved using response streams.</p>
 
 
           
