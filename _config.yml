@@ -91,6 +91,7 @@ delicious_count: 3
 
 # Disqus Comments
 disqus_short_name: evaleverything
+disqus_identifier: evaleverything
 disqus_show_comment_count: true
 
 # Google Analytics

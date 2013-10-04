@@ -5,7 +5,7 @@ footer: false
 ---
 
 <div id="archive">
-  {% for post in paginator.posts %}
+  {% for post in site.posts %}
     {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
     {% unless year == this_year %}
       {% assign year = this_year %}
@@ -25,5 +25,3 @@ footer: false
   {% endfor %}
   </div></div>
 </div>
-
-{% include paginator.html %}
