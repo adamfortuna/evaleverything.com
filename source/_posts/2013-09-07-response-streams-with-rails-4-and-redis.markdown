@@ -6,7 +6,7 @@ date: 2013-09-07 18:25
 comments: true
 sharing: true
 author: Adam Fortuna
-tags: [Ruby, Rails, Redis]
+tags: [Ruby, Rails, Redis, Code School]
 ---
 
 If you're on the fence about updating an older application to use Rails 4, the addition of `ActionController::Live` might be helpful in making your decision a little easier. It enables keeping a connection open to your server, which can then respond with partial updates with ease. This bridges one of the bigger gaps that causes people to choose [node.js][] over Rails for projects.
@@ -112,6 +112,20 @@ end
 This solution is based on the idea that the server will know the client has disconnected when it attempts to write to it only to find it's now there. In this case we open up two threads -- one that does our Redis subscription, and another that handles making sure the client is still there.
 
 If you know of a better way of doing this, I'd love to hear it. Short of using Sinatra, Goliath or another middleware this is the only way I've found to handle this.
+
+## Closing the Database
+
+One downside of keeping the connection open is that if you're using ActiveRecord, that connection will not be released until the request is complete. During the Redis subscribe phase, if you don't need to keep that connection open, you can return the current connection to the `connection_pool`.
+
+```ruby
+ActiveRecord::Base.connection_pool.release_connection
+```
+
+If you set this up to run in a `before` filter, and do any database communication before that, you shouldn't run into database connection limits.
+
+## Update
+
+For an example of how this technique is used, read the post on [Teaching iOS 7 at Code School](/2013/10/04/teaching-ios-7-at-codeschool/). This post details the user experience that can be achieved using response streams.
 
 
 [node.js]: http://nodejs.org/

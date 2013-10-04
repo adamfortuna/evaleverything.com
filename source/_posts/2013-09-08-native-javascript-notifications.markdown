@@ -6,7 +6,7 @@ date: 2013-09-08 23:42
 comments: true
 sharing: true
 author: Adam Fortuna
-tags: [JavaScript, OS X]
+tags: [JavaScript, OS X, Code School]
 ---
 
 In browser notifications have made a lot of progress in the last few years. Hell, native notifications have made a lot of progress in that time too. Just a few years ago, everyone on the Mac was using [Growl][]. With the release of Mac OS X 10.8 (Mountain Lion) the one purpose of Growl was now built in and everyone I know made the switch to using native notifications.
@@ -128,12 +128,14 @@ Chrome and Firefox on Windows support notifications that behave similar to their
 
 Want to see how notifications look in your browser? Try out the [HTML5 Notifications Demo][] to find out.
 
+## Update
+
+For an example of how this technique is used, read the post on [Teaching iOS 7 at Code School](/2013/10/04/teaching-ios-7-at-codeschool/). This post details the user experience that can be achieved using native browser notifications.
+
 {% credits %}
 1. Icons for Safari, Chrome and Firefox by [Stefano Tirloni](http://dribbble.com/shots/1032875-Flat-Icons).
 2. Internet Explorer Icon by [1 Little Designer](http://onelittledesigner.com/rapidweaver/web-icons/free-flat-browser-icons/).
 {% endcredits %}
-
-
 
 
 [Growl]:http://growl.info/
