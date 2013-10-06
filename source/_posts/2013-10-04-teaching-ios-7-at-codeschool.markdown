@@ -42,11 +42,11 @@ Native editing using the same tool you'd use, coupled with an interactive course
 You probably should just watch everything he's ever done.
 {% endpullside %}
 
-Recently [Bret Victor](http://worrydream.com/) put out an inspiring, interactive version of his last talk, [Media for the Unthinkable](http://worrydream.com/MediaForThinkingTheUnthinkable/). This presentation of the content hit close to home. Ever since [Rails for Zombies](http://railsforzombies.com), Code School's courses have featured videos, followed by in browser challenges. The only way to see the video was to navigate back to it, view the video, and then go back to the challenge. We've long known we could do better, but this format was the kick we needed at the right time.
+Recently [Bret Victor](http://worrydream.com/) put out an inspiring, interactive version of his last talk, [Media for Thinking the Unthinkable](http://worrydream.com/MediaForThinkingTheUnthinkable/). This presentation of the content hit close to home. Ever since [Rails for Zombies](http://railsforzombies.com), Code School's courses have featured videos, followed by in browser challenges. The only way to see the video was to navigate back to it, view the video, and then go back to the challenge. We've long known we could do better, but this format was the kick we needed at the right time.
 
-In the footer of interactive version of his **Media for the Unthinkable** talk, Bret goes into the thought behind this method of displaying the content:
+In the footer of interactive version of his **Media for Thinking the Unthinkable** talk, Bret goes into the thought behind this method of displaying the content:
 
-{% blockquote Media for the Unthinkable http://worrydream.com/MediaForThinkingTheUnthinkable/ %}
+{% blockquote Media for Thinking the Unthinkable http://worrydream.com/MediaForThinkingTheUnthinkable/ %}
 But a talk is a poor knowledge-container. It's opaque. The viewer can't skim, browse, or get a gist at a glance. Ideas can't be looked up as needed; they feel fleeting. The medium works well for entertainment — watch and enjoy — but not for a toolbox.
 {% endblockquote %}
 
