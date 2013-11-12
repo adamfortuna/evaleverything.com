@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Tag: visualizations | eval everything]]></title>
+  <link href="http://evaleverything.com/tags/visualizations/atom.xml" rel="self"/>
+  <link href="http://evaleverything.com/"/>
+  <updated>2013-11-11T22:08:33-05:00</updated>
+  <id>http://evaleverything.com/</id>
+  <author>
+    <name><![CDATA[Adam Fortuna]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[XKCD Style Graphs With R]]></title>
+    <link href="http://evaleverything.com/2013/11/12/xkcd-style-graphs-with-r/"/>
+    <updated>2013-11-12T14:03:00-05:00</updated>
+    <id>http://evaleverything.com/2013/11/12/xkcd-style-graphs-with-r</id>
+    <content type="html"><![CDATA[<p>Two years I started doing <a href="http://adamfortuna.com/2-years-of-crossfit/">CrossFit</a> and have since gotten kind of into it. After the CrossFit Open last year, I decided to dive a little deeping into the stats available and was able to prove, using public data, that I&rsquo;m not very good at CrossFit.</p>
+
+<p>Even still, the data set was amazing &mdash; over a hundred thousand people participated in a series of workouts, with details like height, age, gender and weight on most of them. With this I started looking for patterns. Do taller people do better at a specific movement? How much does experience in CrossFit affect ranking? This lead me down a rabbit hole that is the statistics community.</p>
+
+<h2>Getting Started with R</h2>
+
+<p><div class='pull-left '><p><img src="/images/codeschool/try-r.png" alt="Try R" class="icon" /></p>
+</div></p>
+
+<p>I got my introduction to R when writing the JavaScript/HTML front-end for Code Schools <a href="http://tryr.codeschool.com">Try R</a> course. <a href="https://twitter.com/jaymcgavren">Jay McGavren</a> did an amazing job on the content. I still laugh thinking about finding the mean number of limbs in a group of pirates who had obviously been through some hard times.</p>
+
+<p>Try R is still one of my favorite Code School courses. It&rsquo;s free, and only takes about an hour to go through. It also introduces some of the core concepts of R that come in handy reading the code below.</p>
+
+<h2>(Re)Learnings Statistics</h2>
+
+<p><div class='pull-right '><p>Coursera has some amazing courses on statistics.</p>
+</div></p>
+
+<p>Like most people, I took some statistics in college, but don&rsquo;t use too much of it on a daily basis. Lucky for me, <a href="http://coursera.org/">Coursera</a> has some amazing stats classes. The one I ended up going through was called <a href="https://class.coursera.org/introstats-001/class">Statistics: Making Sense of Data</a>, which hit close to what I was wanting to learn.</p>
+
+<p>One of the nice parts about the format was it was taught similar to how it would be taught at a university &mdash; with the main instructors teaching the statistics side, then with shorter followup videos detailing how to do the same thing in R.</p>
+
+<h2>A Boxplot Graph</h2>
+
+<p>Armed with new information about how to draw information from&hellip; other information, I went ahead and started making my first graph &mdash; a handy boxplot. With all the information loaded into a Postgres database and put together the following script.</p>
+
+<p>```r</p>
+
+<h1>Setup Postgres connection</h1>
+
+<p>library(&lsquo;RPostgreSQL&rsquo;)
+drv &lt;&ndash; dbDriver(&ldquo;PostgreSQL&rdquo;)
+con &lt;&ndash; dbConnect(drv, dbname=&ldquo;crossfitopen_development&rdquo;)</p>
+
+<h1>Query the database</h1>
+
+<p>rs &lt;&ndash; dbSendQuery(con,&ldquo;select info_time_crossfitting, wod1_score</p>
+
+<pre><code>    from athletes where mens=FALSE and info_time_crossfitting 
+    is not null and wod1_score &gt; 5")
+</code></pre>
+
+<h1>Load in our 70k rows</h1>
+
+<p>results &lt;&ndash; fetch(rs,n=-1)</p>
+
+<h1>Give names to our columns</h1>
+
+<p>colnames(results) = c(&lsquo;Experience&rsquo;, &lsquo;Score&rsquo;)</p>
+
+<h1>Create R variables for each column in the database</h1>
+
+<h1>Creates:</h1>
+
+<h1>Experience vector</h1>
+
+<h1>Score vector</h1>
+
+<p>attach(results)</p>
+
+<h1>Order our Experience vector</h1>
+
+<p>Experience = factor(Experience, c(&lsquo;Less than 6 months&rsquo;, &lsquo;6-12 months&rsquo;,</p>
+
+<pre><code>        '1-2 years', '2-4 years', '4+ years', 'Decline to answer'))
+</code></pre>
+
+<h1>Create Barplot!</h1>
+
+<p>boxplot(Score~Experience, range=0,  main=&lsquo;WOD 13.1 By Experience (Women)&rsquo;)</p>
+
+<p>```</p>
+
+<p>This pulled up an easy to understand Boxplot.</p>
+
+<p><div class='pull-right '><p>Statistical proof I’m bad at CrossFit</p>
+</div></p>
+
+<p><img src="/images/xkcd-style-graphs-with-r/experience.png" alt="Experience" /></p>
+
+<p>Each vertical box represents what 50% of the popuplation on that vertical achieved, with the line inside the boxplot representing the median for that segment. Seeing as how I&rsquo;d been CrossFitting for 1-2 years, and only scored 100 on this workout, I was sad to see my score was in the bottom 25% for my group. I knew I had to look deeper to see how I compared.</p>
+
+<h2>Having Fun With XKCD</h2>
+
+<p>I stumbled upon the <a href="http://xkcd.r-forge.r-project.org/">XKCD Package For R</a> not too long after, and decided to have some fun with this data. This library is plain out amazing, and impressive. Looking at the examples on the page alone I knew it was way over my head being still very new to R. But with one chart in mind &mdash; my ranking on the 5 workouts &mdash; I decided to start writing a graph using the XKCD style.</p>
+
+<p>```r
+library(extrafont)
+loadfonts()
+library(xkcd)</p>
+
+<h1>Bring in the data!</h1>
+
+<h1>workout=c(1:5) &ndash; creates a range from 1-5, so 1,2,3,4,5</h1>
+
+<h1>c(16&hellip;) &ndash; These are my percentiles for the five workouts, resepectively</h1>
+
+<p>scores &lt;&ndash; data.frame(workout=c(1:5), rank=c(16.71, 4.21, 19.61, 4.9, 19.38))</p>
+
+<h1>Define how much of the X and Y access to show.</h1>
+
+<h1>In our case, we&rsquo;ll show all of the Y access,</h1>
+
+<h1>but only 1-5 on the X access side.</h1>
+
+<p>xrange &lt;&ndash; range(scores$workout)
+yrange &lt;&ndash; range(c(0,100))
+ratioxy &lt;&ndash; diff(xrange) / diff(yrange)</p>
+
+<h1>Let&rsquo;s create XKCD style stick figure</h1>
+
+<h1>I blatantly copied this part from the sample code</h1>
+
+<p>mapping &lt;&ndash; aes(x,  y,</p>
+
+<pre><code>            scale,
+            ratioxy,
+            angleofspine ,
+            anglerighthumerus,
+            anglelefthumerus,
+            anglerightradius,
+            angleleftradius,
+            anglerightleg,
+            angleleftleg,
+            angleofneck)
+</code></pre>
+
+<h1>The c(1.5,4.5) reprents the X coordinates of each of the 2 stick figures &mdash;</h1>
+
+<h1>likewise for the y coordinate. The rest of these control the arms and legs</h1>
+
+<p>dataman &lt;&ndash; data.frame( x= c(1.5,4.5), y=c(80, 70),</p>
+
+<pre><code>                   scale = 17,
+                   ratioxy = ratioxy,
+                   angleofspine =  -pi/2  ,
+                   anglerighthumerus = c(-pi/6, -pi/6),
+                   anglelefthumerus = c(-pi/2 - pi/6, -pi/2 - pi/6),
+                   anglerightradius = c(pi/5, -pi/5),
+                   angleleftradius = c(pi/5, -pi/5),
+                   angleleftleg = 3*pi/2  + pi / 12 ,
+                   anglerightleg = 3*pi/2  - pi / 12,
+                   angleofneck = runif(1, 3*pi/2-pi/10, 3*pi/2+pi/10))
+</code></pre>
+
+<h1>Those squigly lines that connect text to a character are easy to draw.</h1>
+
+<h1>Each needs an x/y start point and an x/y end point. The library does the rest.</h1>
+
+<p>datalines &lt;&ndash; data.frame(xbegin=c(1.9,4.2,2),</p>
+
+<pre><code>                    ybegin=c(80,70,77), 
+                    xend=c(2.1,3.9,2.8),
+                    yend=c(88,80,68))
+</code></pre>
+
+<h1>Using ggplot to do the actual graphing &mdash; an versatile graphing library for R</h1>
+
+<p>p &lt;&ndash; ggplot() + geom_smooth(mapping=aes(x=workout, y =rank),</p>
+
+<pre><code>                        data=scores,
+                        method="loess") 
+</code></pre>
+
+<h1>Do ALL the generating!</h1>
+
+<h1>This includes putting everything together and adding the sample text we want to write.</h1>
+
+<h1>Of course, this text should be written using the xkcd font.</h1>
+
+<p>p + xkcdaxis(xrange,yrange) +
+   ylab(&ldquo;Percentile&rdquo;) +
+   xkcdman(mapping, dataman) +
+   annotate(&ldquo;text&rdquo;, x=2.4, y = 93, label = &ldquo;There&rsquo;s a lot of\nroom up here&rdquo;, family=&ldquo;xkcd&rdquo; ) +
+   annotate(&ldquo;text&rdquo;, x=4.1, y = 83, label = &ldquo;Let&rsquo;s do 7 minutes of Burpees!&rdquo;, family=&ldquo;xkcd&rdquo; ) +
+   annotate(&ldquo;text&rdquo;, x=2.8, y = 62, label = &ldquo;I will use your face\nas a wallball target&hellip;&rdquo;, family=&ldquo;xkcd&rdquo; ) +
+   xkcdline(aes(xbegin=xbegin,ybegin=ybegin,xend=xend,yend=yend),datalines, xjitteramount = 0.11)
+```</p>
+
+<p>Running this in the R console, generates a pretty slick graph:</p>
+
+<p><img src="/images/xkcd-style-graphs-with-r/xkcd.png" alt="Experience" /></p>
+
+<p>Even if I don&rsquo;t see myself creating loads of XKCD style graphs, getting one made was a lot of fun.
+If you&rsquo;re curious what else you can do with the XKCD library, check out the <a href="http://cran.r-project.org/web/packages/xkcd/vignettes/xkcd-intro.pdf">documentation</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

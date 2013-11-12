@@ -4,7 +4,7 @@
   <title><![CDATA[eval everything]]></title>
   <link href="http://evaleverything.com/atom.xml" rel="self"/>
   <link href="http://evaleverything.com/"/>
-  <updated>2013-10-05T22:08:07-04:00</updated>
+  <updated>2013-11-11T22:08:33-05:00</updated>
   <id>http://evaleverything.com/</id>
   <author>
     <name><![CDATA[Adam Fortuna]]></name>
@@ -12,6 +12,161 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[XKCD Style Graphs With R]]></title>
+    <link href="http://evaleverything.com/2013/11/12/xkcd-style-graphs-with-r/"/>
+    <updated>2013-11-12T14:03:00-05:00</updated>
+    <id>http://evaleverything.com/2013/11/12/xkcd-style-graphs-with-r</id>
+    <content type="html"><![CDATA[<p>Two years I started doing <a href="http://adamfortuna.com/2-years-of-crossfit/">CrossFit</a> and have since gotten kind of into it. After the CrossFit Open last year, I decided to dive a little deeping into the stats available and was able to prove, using public data, that I&rsquo;m not very good at CrossFit.</p>
+
+<p>Even still, the data set was amazing &mdash; over a hundred thousand people participated in a series of workouts, with details like height, age, gender and weight on most of them. With this I started looking for patterns. Do taller people do better at a specific movement? How much does experience in CrossFit affect ranking? This lead me down a rabbit hole that is the statistics community.</p>
+
+<h2>Getting Started with R</h2>
+
+<div class='pull-left '><p><img src="http://evaleverything.com/images/codeschool/try-r.png" alt="Try R" class="icon" /></p>
+</div>
+
+
+<p>I got my introduction to R when writing the JavaScript/HTML front-end for Code Schools <a href="http://tryr.codeschool.com">Try R</a> course. <a href="https://twitter.com/jaymcgavren">Jay McGavren</a> did an amazing job on the content. I still laugh thinking about finding the mean number of limbs in a group of pirates who had obviously been through some hard times.</p>
+
+<p>Try R is still one of my favorite Code School courses. It&rsquo;s free, and only takes about an hour to go through. It also introduces some of the core concepts of R that come in handy reading the code below.</p>
+
+<h2>(Re)Learnings Statistics</h2>
+
+<div class='pull-right '><p>Coursera has some amazing courses on statistics.</p>
+</div>
+
+
+<p>Like most people, I took some statistics in college, but don&rsquo;t use too much of it on a daily basis. Lucky for me, <a href="http://coursera.org/">Coursera</a> has some amazing stats classes. The one I ended up going through was called <a href="https://class.coursera.org/introstats-001/class">Statistics: Making Sense of Data</a>, which hit close to what I was wanting to learn.</p>
+
+<p>One of the nice parts about the format was it was taught similar to how it would be taught at a university &mdash; with the main instructors teaching the statistics side, then with shorter followup videos detailing how to do the same thing in R.</p>
+
+<h2>A Boxplot Graph</h2>
+
+<p>Armed with new information about how to draw information from&hellip; other information, I went ahead and started making my first graph &mdash; a handy boxplot. With all the information loaded into a Postgres database and put together the following script.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='r'><span class='line'><span class="c1"># Setup Postgres connection</span>
+</span><span class='line'>library<span class="p">(</span><span class="s">&#39;RPostgreSQL&#39;</span><span class="p">)</span>
+</span><span class='line'>drv <span class="o">&lt;-</span> dbDriver<span class="p">(</span><span class="s">&quot;PostgreSQL&quot;</span><span class="p">)</span>
+</span><span class='line'>con <span class="o">&lt;-</span> dbConnect<span class="p">(</span>drv<span class="p">,</span> dbname<span class="o">=</span><span class="s">&quot;crossfitopen_development&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Query the database</span>
+</span><span class='line'>rs <span class="o">&lt;-</span> dbSendQuery<span class="p">(</span>con<span class="p">,</span><span class="s">&quot;select info_time_crossfitting, wod1_score </span>
+</span><span class='line'><span class="s">        from athletes where mens=FALSE and info_time_crossfitting </span>
+</span><span class='line'><span class="s">        is not null and wod1_score &gt; 5&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Load in our 70k rows</span>
+</span><span class='line'>results <span class="o">&lt;-</span> fetch<span class="p">(</span>rs<span class="p">,</span>n<span class="o">=</span><span class="m">-1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Give names to our columns</span>
+</span><span class='line'>colnames<span class="p">(</span>results<span class="p">)</span> <span class="o">=</span> c<span class="p">(</span><span class="s">&#39;Experience&#39;</span><span class="p">,</span> <span class="s">&#39;Score&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Create R variables for each column in the database</span>
+</span><span class='line'><span class="c1"># Creates:</span>
+</span><span class='line'><span class="c1">#   Experience vector</span>
+</span><span class='line'><span class="c1">#   Score vector</span>
+</span><span class='line'>attach<span class="p">(</span>results<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Order our Experience vector</span>
+</span><span class='line'>Experience <span class="o">=</span> factor<span class="p">(</span>Experience<span class="p">,</span> c<span class="p">(</span><span class="s">&#39;Less than 6 months&#39;</span><span class="p">,</span> <span class="s">&#39;6-12 months&#39;</span><span class="p">,</span>
+</span><span class='line'>            <span class="s">&#39;1-2 years&#39;</span><span class="p">,</span> <span class="s">&#39;2-4 years&#39;</span><span class="p">,</span> <span class="s">&#39;4+ years&#39;</span><span class="p">,</span> <span class="s">&#39;Decline to answer&#39;</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Create Barplot!</span>
+</span><span class='line'>boxplot<span class="p">(</span>Score<span class="o">~</span>Experience<span class="p">,</span> range<span class="o">=</span><span class="m">0</span><span class="p">,</span>  main<span class="o">=</span><span class="s">&#39;WOD 13.1 By Experience (Women)&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>This pulled up an easy to understand Boxplot.</p>
+
+<div class='pull-right '><p>Statistical proof I’m bad at CrossFit</p>
+</div>
+
+
+<p><img src="http://evaleverything.com/images/xkcd-style-graphs-with-r/experience.png" alt="Experience" /></p>
+
+<p>Each vertical box represents what 50% of the popuplation on that vertical achieved, with the line inside the boxplot representing the median for that segment. Seeing as how I&rsquo;d been CrossFitting for 1-2 years, and only scored 100 on this workout, I was sad to see my score was in the bottom 25% for my group. I knew I had to look deeper to see how I compared.</p>
+
+<h2>Having Fun With XKCD</h2>
+
+<p>I stumbled upon the <a href="http://xkcd.r-forge.r-project.org/">XKCD Package For R</a> not too long after, and decided to have some fun with this data. This library is plain out amazing, and impressive. Looking at the examples on the page alone I knew it was way over my head being still very new to R. But with one chart in mind &mdash; my ranking on the 5 workouts &mdash; I decided to start writing a graph using the XKCD style.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr> <td class='code'><pre><code class='r'><span class='line'>library<span class="p">(</span>extrafont<span class="p">)</span>
+</span><span class='line'>loadfonts<span class="p">()</span>
+</span><span class='line'>library<span class="p">(</span>xkcd<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Bring in the data! </span>
+</span><span class='line'><span class="c1">#   workout=c(1:5) - creates a range from 1-5, so 1,2,3,4,5</span>
+</span><span class='line'><span class="c1">#   c(16...) - These are my percentiles for the five workouts, resepectively</span>
+</span><span class='line'>scores <span class="o">&lt;-</span> data.frame<span class="p">(</span>workout<span class="o">=</span>c<span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">5</span><span class="p">),</span> rank<span class="o">=</span>c<span class="p">(</span><span class="m">16.71</span><span class="p">,</span> <span class="m">4.21</span><span class="p">,</span> <span class="m">19.61</span><span class="p">,</span> <span class="m">4.9</span><span class="p">,</span> <span class="m">19.38</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Define how much of the X and Y access to show.</span>
+</span><span class='line'><span class="c1"># In our case, we&#39;ll show all of the Y access,</span>
+</span><span class='line'><span class="c1"># but only 1-5 on the X access side.</span>
+</span><span class='line'>xrange <span class="o">&lt;-</span> range<span class="p">(</span>scores<span class="o">$</span>workout<span class="p">)</span>
+</span><span class='line'>yrange <span class="o">&lt;-</span> range<span class="p">(</span>c<span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">100</span><span class="p">))</span>
+</span><span class='line'>ratioxy <span class="o">&lt;-</span> diff<span class="p">(</span>xrange<span class="p">)</span> <span class="o">/</span> diff<span class="p">(</span>yrange<span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Let&#39;s create XKCD style stick figure</span>
+</span><span class='line'><span class="c1"># I blatantly copied this part from the sample code</span>
+</span><span class='line'>mapping <span class="o">&lt;-</span> aes<span class="p">(</span>x<span class="p">,</span>  y<span class="p">,</span>
+</span><span class='line'>                scale<span class="p">,</span>
+</span><span class='line'>                ratioxy<span class="p">,</span>
+</span><span class='line'>                angleofspine <span class="p">,</span>
+</span><span class='line'>                anglerighthumerus<span class="p">,</span>
+</span><span class='line'>                anglelefthumerus<span class="p">,</span>
+</span><span class='line'>                anglerightradius<span class="p">,</span>
+</span><span class='line'>                angleleftradius<span class="p">,</span>
+</span><span class='line'>                anglerightleg<span class="p">,</span>
+</span><span class='line'>                angleleftleg<span class="p">,</span>
+</span><span class='line'>                angleofneck<span class="p">)</span>
+</span><span class='line'><span class="c1"># The c(1.5,4.5) reprents the X coordinates of each of the 2 stick figures --</span>
+</span><span class='line'><span class="c1"># likewise for the y coordinate. The rest of these control the arms and legs</span>
+</span><span class='line'>dataman <span class="o">&lt;-</span> data.frame<span class="p">(</span> x<span class="o">=</span> c<span class="p">(</span><span class="m">1.5</span><span class="p">,</span><span class="m">4.5</span><span class="p">),</span> y<span class="o">=</span>c<span class="p">(</span><span class="m">80</span><span class="p">,</span> <span class="m">70</span><span class="p">),</span>
+</span><span class='line'>                       scale <span class="o">=</span> <span class="m">17</span><span class="p">,</span>
+</span><span class='line'>                       ratioxy <span class="o">=</span> ratioxy<span class="p">,</span>
+</span><span class='line'>                       angleofspine <span class="o">=</span>  <span class="o">-</span>pi<span class="o">/</span><span class="m">2</span>  <span class="p">,</span>
+</span><span class='line'>                       anglerighthumerus <span class="o">=</span> c<span class="p">(</span><span class="o">-</span>pi<span class="o">/</span><span class="m">6</span><span class="p">,</span> <span class="o">-</span>pi<span class="o">/</span><span class="m">6</span><span class="p">),</span>
+</span><span class='line'>                       anglelefthumerus <span class="o">=</span> c<span class="p">(</span><span class="o">-</span>pi<span class="o">/</span><span class="m">2</span> <span class="o">-</span> pi<span class="o">/</span><span class="m">6</span><span class="p">,</span> <span class="o">-</span>pi<span class="o">/</span><span class="m">2</span> <span class="o">-</span> pi<span class="o">/</span><span class="m">6</span><span class="p">),</span>
+</span><span class='line'>                       anglerightradius <span class="o">=</span> c<span class="p">(</span>pi<span class="o">/</span><span class="m">5</span><span class="p">,</span> <span class="o">-</span>pi<span class="o">/</span><span class="m">5</span><span class="p">),</span>
+</span><span class='line'>                       angleleftradius <span class="o">=</span> c<span class="p">(</span>pi<span class="o">/</span><span class="m">5</span><span class="p">,</span> <span class="o">-</span>pi<span class="o">/</span><span class="m">5</span><span class="p">),</span>
+</span><span class='line'>                       angleleftleg <span class="o">=</span> <span class="m">3</span><span class="o">*</span>pi<span class="o">/</span><span class="m">2</span>  <span class="o">+</span> pi <span class="o">/</span> <span class="m">12</span> <span class="p">,</span>
+</span><span class='line'>                       anglerightleg <span class="o">=</span> <span class="m">3</span><span class="o">*</span>pi<span class="o">/</span><span class="m">2</span>  <span class="o">-</span> pi <span class="o">/</span> <span class="m">12</span><span class="p">,</span>
+</span><span class='line'>                       angleofneck <span class="o">=</span> runif<span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="o">*</span>pi<span class="o">/</span><span class="m">2</span><span class="o">-</span>pi<span class="o">/</span><span class="m">10</span><span class="p">,</span> <span class="m">3</span><span class="o">*</span>pi<span class="o">/</span><span class="m">2</span><span class="o">+</span>pi<span class="o">/</span><span class="m">10</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Those squigly lines that connect text to a character are easy to draw.</span>
+</span><span class='line'><span class="c1"># Each needs an x/y start point and an x/y end point. The library does the rest.</span>
+</span><span class='line'>datalines <span class="o">&lt;-</span> data.frame<span class="p">(</span>xbegin<span class="o">=</span>c<span class="p">(</span><span class="m">1.9</span><span class="p">,</span><span class="m">4.2</span><span class="p">,</span><span class="m">2</span><span class="p">),</span>
+</span><span class='line'>                        ybegin<span class="o">=</span>c<span class="p">(</span><span class="m">80</span><span class="p">,</span><span class="m">70</span><span class="p">,</span><span class="m">77</span><span class="p">),</span>
+</span><span class='line'>                        xend<span class="o">=</span>c<span class="p">(</span><span class="m">2.1</span><span class="p">,</span><span class="m">3.9</span><span class="p">,</span><span class="m">2.8</span><span class="p">),</span>
+</span><span class='line'>                        yend<span class="o">=</span>c<span class="p">(</span><span class="m">88</span><span class="p">,</span><span class="m">80</span><span class="p">,</span><span class="m">68</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Using ggplot to do the actual graphing -- an versatile graphing library for R</span>
+</span><span class='line'>p <span class="o">&lt;-</span> ggplot<span class="p">()</span> <span class="o">+</span> geom_smooth<span class="p">(</span>mapping<span class="o">=</span>aes<span class="p">(</span>x<span class="o">=</span>workout<span class="p">,</span> y <span class="o">=</span>rank<span class="p">),</span>
+</span><span class='line'>                            data<span class="o">=</span>scores<span class="p">,</span>
+</span><span class='line'>                            method<span class="o">=</span><span class="s">&quot;loess&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># Do ALL the generating!</span>
+</span><span class='line'><span class="c1"># This includes putting everything together and adding the sample text we want to write.</span>
+</span><span class='line'><span class="c1"># Of course, this text should be written using the xkcd font.</span>
+</span><span class='line'>p <span class="o">+</span> xkcdaxis<span class="p">(</span>xrange<span class="p">,</span>yrange<span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>   ylab<span class="p">(</span><span class="s">&quot;Percentile&quot;</span><span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>   xkcdman<span class="p">(</span>mapping<span class="p">,</span> dataman<span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>   annotate<span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">,</span> x<span class="o">=</span><span class="m">2.4</span><span class="p">,</span> y <span class="o">=</span> <span class="m">93</span><span class="p">,</span> label <span class="o">=</span> <span class="s">&quot;There&#39;s a lot of\nroom up here&quot;</span><span class="p">,</span> family<span class="o">=</span><span class="s">&quot;xkcd&quot;</span> <span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>   annotate<span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">,</span> x<span class="o">=</span><span class="m">4.1</span><span class="p">,</span> y <span class="o">=</span> <span class="m">83</span><span class="p">,</span> label <span class="o">=</span> <span class="s">&quot;Let&#39;s do 7 minutes of Burpees!&quot;</span><span class="p">,</span> family<span class="o">=</span><span class="s">&quot;xkcd&quot;</span> <span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>   annotate<span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">,</span> x<span class="o">=</span><span class="m">2.8</span><span class="p">,</span> y <span class="o">=</span> <span class="m">62</span><span class="p">,</span> label <span class="o">=</span> <span class="s">&quot;I will use your face\nas a wallball target...&quot;</span><span class="p">,</span> family<span class="o">=</span><span class="s">&quot;xkcd&quot;</span> <span class="p">)</span> <span class="o">+</span>
+</span><span class='line'>   xkcdline<span class="p">(</span>aes<span class="p">(</span>xbegin<span class="o">=</span>xbegin<span class="p">,</span>ybegin<span class="o">=</span>ybegin<span class="p">,</span>xend<span class="o">=</span>xend<span class="p">,</span>yend<span class="o">=</span>yend<span class="p">),</span>datalines<span class="p">,</span> xjitteramount <span class="o">=</span> <span class="m">0.11</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Running this in the R console, generates a pretty slick graph:</p>
+
+<p><img src="http://evaleverything.com/images/xkcd-style-graphs-with-r/xkcd.png" alt="Experience" /></p>
+
+<p>Even if I don&rsquo;t see myself creating loads of XKCD style graphs, getting one made was a lot of fun.
+If you&rsquo;re curious what else you can do with the XKCD library, check out the <a href="http://cran.r-project.org/web/packages/xkcd/vignettes/xkcd-intro.pdf">documentation</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Teaching iOS 7 at Code School]]></title>
